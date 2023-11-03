@@ -6,6 +6,7 @@ html {
   
   body {
     max-width: 960px;
+    width: 640px;
     margin: 0 auto;
     background: white;
   }
@@ -131,4 +132,209 @@ html {
   input[type=submit] {
     align-self: start;
     min-width: 10em;
+  }
+
+  .Report-crime {
+    width:280px;
+    height:160px;
+    padding: 5px;
+    margin:5px;
+    line-height:5px;
+    letter-spacing: 1px;
+    color:white;
+    background-image:url(../static/image/report-crime.png);
+    background-size:100% 100%;
+    cursor:pointer;
+  }
+
+  .Report-crime h3 {
+    color: white;
+    margin-left: 10px;
+}
+  .Report-crime p {
+    font-weight: 300;
+    margin-top: 30px;
+    margin-left: 10px;
+  }
+  .progress-query {
+    width:280px;
+    height:160px;
+    padding:5px;
+    margin:5px;
+    line-height:5px;
+    letter-spacing: 1px;
+    color:white;
+    background-image:url(../static/image/progress.png);
+    background-size:100% 100%;
+    cursor:pointer;
+  }
+
+  .progress-query h3 {
+    color: white;
+    margin-left: 10px;
+  }
+  .progress-query p {
+    font-weight: 300;
+    margin-top: 30px;
+    margin-left: 10px;
+  }
+  .space-around {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .go-image {
+    width: 50px;
+    height: 20px;
+  }
+
+  .strategy {
+    background-image: url(../static/image/strategy.png);
+    background-size:100% 100%;
+    width:600px;
+    height:273px;
+    text-indent:5%;
+    line-height:50px;
+    letter-spacing: 1px;
+    display:table-cell;
+    vertical-align: middle;
+  }
+
+  .strategy h2{
+    font-weight: 900;
+    font-size: 30px;
+  }
+
+  .strategy h3{
+    font-size: 20px;
+  }
+
+  .material{ 
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .caption{
+    width:290px;
+  }
+
+  .caption p{
+    font-size: 20px;
+    margin-top: 20px;
+  }
+
+  .caption ul{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding-inline-start: 0;
+    margin-top: 60px;
+  }
+
+  .material-image{
+    width:240px;
+    height:150px;
+  }
+
+  .IDcard-card {
+    background-image: url(../static/image/id-report.png);
+    background-size: 100%, 100%;
+    width:600px;
+    height:250px;
+    padding-left: 10px;
+  }
+
+  .IDcard-card h1 {
+    padding-top: 70px;
+    padding-left: 15px;
+  }
+
+  .IDcard-card h3 {
+    padding-left: 15px;
+  }
+
+  .name-card {
+    background-image: url(../static/image/name-report.png);
+    background-size: 100%, 100%;
+    width:600px;
+    height:250px;
+    padding-left: 10px;
+  }
+
+  .name-card h1{
+    padding-top: 70px;
+    padding-left: 15px;
+  }
+
+  .name-card h3{
+    padding-left: 15px;
+  }
+  
+  #popup1{
+    text-align: center;
+  }
+  
+  #popup1 input {
+    width: 400px;
+    height: 30px;
+  }
+
+  #popup2{
+    text-align: center;
+  }
+  
+  #popup2 input {
+    width: 400px;
+    height: 30px;
+  }
+
+  .submit{
+    background-color: dodgerblue;
+    color: white;
+    border: white;
+  }
+
+  .cover {
+    width: 640px;
+    height: 900px;
+    position: absolute;
+    top: 0;
+    left: 400px;
+    background: black;
+    opacity: 0.3;
+  }
+
+  #query {
+    position: relative;
+    left: 15px;
+    width: 500px;
+    height: 35px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(220,220,220,0.3);
+    color: grey;
+    padding-left: 10px;
+    outline: none;
+  }
+
+  .check {
+    color: white;
+    background-color: dodgerblue;
+    border-radius: 20px;
+    height: 35px;
+    border: none;
+    position: relative;
+    right: 15px;
+  }
+
+  #no-record {
+    text-align:center;
+    height:800px;
+  }
+
+  .health img {
+    width:600px;
+    height:400px;
   }

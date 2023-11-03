@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block header %}
+<h1>{% block title %}锐鹿保{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<div class="IDcard-card" onclick="add_idcard()">
+    <h1>使用身份证号报案</h1>
+    <h3>我知道出险人员身份证号报案</h3>
+</div>
+
+<div class="name-card" onclick="add_name()">
+    <h1>使用姓名+企业名称报案</h1>
+    <h3>我知道出险人员姓名和企业名称</h3>
+</div>
+
+<div style="height:300px">
+    <br>
+</div>
+
+<form method="post" autocomplete="off">
+<div id="popup1" style="display:none">
+<div class="cover" onclick="replace()"></div>
+<div>
+    <h3>使用身份证号报案</h3>
+    <input name="person_idcard" id="person_idcard" value="请输入出险人的身份证号" required
+    onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue" />
+    <input class="submit" type="submit" value="提交">
+</div>
+</div>
+
+<div id="popup2" style="display:none">
+<div class="cover" onclick="replace()"></div>
+<div>
+    <h3>使用姓名+企业名称报案</h3>
+    <input name="person_name" id="person_name" value="请输入您的姓名" required
+    onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue" />
+    <input name="company_name" id="company_name" value="请输入您的企业名称" required
+    onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue" />
+    <input class="submit" type="submit" value="提交">
+</div>
+</div>
+</form>
+<script>
+    function replace(){
+        var popup1=document.getElementById("popup1");
+        popup1.style.display="none"
+        var popup2=document.getElementById("popup2");
+        popup2.style.display="none"
+    }
+
+    function add_idcard(){
+        var popup1=document.getElementById("popup1");
+        popup1.style.display="block"
+    }
+    function add_name(){
+        var popup2=document.getElementById("popup2");
+        popup2.style.display="block"
+    }
+</script>
+{% endblock %}

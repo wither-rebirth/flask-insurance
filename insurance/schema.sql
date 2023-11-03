@@ -15,6 +15,8 @@ CREATE TABLE person (
     person_phone INTEGER NOT NULL,
     person_gender TEXT NOT NULL,
     person_birth DATE NOT NULL,
+    person_idcard INTEGER NOT NULL,
+    company_name tEXT NOT NULL,
     FOREIGN KEY (person_id) REFERENCES user (id)
 );
 
