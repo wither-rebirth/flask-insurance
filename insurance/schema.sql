@@ -30,5 +30,7 @@ CREATE TABLE service (
     service_description TEXT NOT NULL,
     crime_id INTEGER NOT NULL,
     insurance_id INTEGER NOT NULL,
+    case_progress TEXT NOT NULL,
+    case_status TEXT NOT NULL,
     FOREIGN KEY (service_id) REFERENCES person (id)
 )

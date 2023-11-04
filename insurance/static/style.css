@@ -8,7 +8,7 @@ html {
     max-width: 960px;
     width: 640px;
     margin: 0 auto;
-    background: white;
+    background: #F4F7FF;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -338,3 +338,55 @@ html {
     width:600px;
     height:400px;
   }
+
+  .query{
+    border-radius: 15px;
+    position: relative;
+    background: white;
+  }
+
+  .query img {
+    width:600px;
+    height: 15px;
+  }
+
+  .query ul{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    list-style-type: none;
+    padding-inline-start: 20px
+  }
+
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    height: 45px;
+  }
+
+  .connect{
+    text-align: center;
+    position: absolute;
+    left: 330px;
+    border: black;
+    border-style: solid;
+    width: 100px;
+    height: 30px;
+    line-height: 0px;
+    background: rgb(220,220,220,0.1);
+    border-width: thin;
+  }
+
+  .upload {
+    position: absolute;
+    right: 25px;
+    color: blue;
+    text-align: center;
+    border: black;
+    border-style: solid;
+    width: 135px;
+    height: 32px;
+    line-height: 0px;
+    background: rgb(220,220,220,0.1);
+    border-width: thin;
+  }
+

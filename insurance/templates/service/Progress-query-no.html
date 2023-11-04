@@ -7,9 +7,14 @@
 {% block content %}
 <form method="post" autocomplete="off">
 <div style="padding-top:10px; display:flex">
-    <input id="crime_id" value="输入出险人姓名、报案号查询"
+    <input id="query" value="输入出险人姓名、报案号查询"
     onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue" />
     <input class='check' style="min-width:80px" type="submit" value="搜索">
 </div>
 </form>
+
+<div id="no-record">
+    <img style="width:300px" src="../static/image/no-record.png">
+    <p>暂无理赔记录</p>
+</div>
 {% endblock %}
