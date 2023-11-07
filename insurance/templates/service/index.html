@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="space-around">
-<a>
+<a href="{{ url_for('service.report_crime_idcard')}}">
 <div class="Report-crime">
     <h3>我要报案</h3>
     <p>发起新的案件理赔</p>
@@ -14,7 +14,7 @@
 </div>
 </a>
 
-<a>
+<a href="{{ url_for('service.progress_query') }}">
 <div class="progress-query">
     <h3>进度查询</h3>
     <p>案件处理及进度查询</p>

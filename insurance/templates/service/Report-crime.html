@@ -24,10 +24,12 @@
 <div id="popup1" style="display:none">
 <div class="cover" onclick="replace()"></div>
 <div>
+    <form method="post">
     <h3>使用身份证号报案</h3>
     <input name="person_idcard" id="person_idcard" value="请输入出险人的身份证号" required
     onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue" />
     <input class="submit" type="submit" value="提交">
+    </form>
 </div>
 </div>
 
@@ -55,6 +57,7 @@
         var popup1=document.getElementById("popup1");
         popup1.style.display="block"
     }
+    
     function add_name(){
         var popup2=document.getElementById("popup2");
         popup2.style.display="block"

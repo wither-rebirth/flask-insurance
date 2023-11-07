@@ -5,5 +5,71 @@
 {% endblock %}
 
 {% block content %}
+<div style="display:flex;margin-top: 10px;">
+    <div class="left_block"><p>提交出险信息</p></div>
+    <div class="right_block"><p>上传出险图片</p></div>
+</div>
+
+<div class="main_block">
+    <p>出险人员</p>
+    <input required>
+</div>
+
+<div class="main_block">
+    <p>出险保单</p>
+    <input required>
+</div>
+
+<div class="main_block">
+    <p>出险时间</p>
+    <input type="datetime-local" value="请选择事故发生的时间点" required>
+</div> 
+
+<div class="main_block">
+    <p>报案原因</p>
+    <div class="block_left"><p>人员受伤</p></div>
+    <div class="block_right"><p>死亡/身故</p></div>
+</div> 
+
+<div class="main_block_1"> 
+    <p>人员治疗情况 (可多选)</p>
+    <div class="block_1"><p>门诊治疗</p></div>
+    <div class="block_1" style="left:180px"><p>住院治疗</p></div>
+    <div class="block_1" style="left:290px"><p>重伤抢救</p></div>
+    <div class="block_1" style="left:400px"><p>暂未治疗</p></div>
+</div>
+
+<div class="describe">
+    <p>事故描述</p>
+    <textarea placeholder="请简要描述事件地点，经过和损失情况" required></textarea>
+</div>
+
+<div class="main_block">
+    <p>联系电话</p>
+    <input required>
+</div>
+
+<div class="main_block">
+    <p>备用电话(选填)</p>
+    <input value="作为联系不上时的备选电话"
+    onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue">
+</div>
+
+<div class="main_block">
+    <p>电子邮箱(选填)</p>
+    <input value="用于接收理赔材料模版"
+    onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue">
+</div>
+
+<div class="main_block">
+    <p>就诊医院(选填)</p>
+    <input value="请输入就诊医院"
+    onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue">
+</div>
+
+<div class="end_block">
+    <input type="submit" input="保存">
+    <div class="end_block_next"><p>下一步</p></div>
+</div>
 
 {% endblock %}
