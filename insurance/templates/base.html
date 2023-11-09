@@ -3,7 +3,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 <nav>
-    <h1>insurance</h1>
+    <a id="back" href="javascript:history.go(-1);" rel="external nofollow">
+        <img src="../static/image/return.png">
+    </a>
     <ul>
         {% if g.user %}
         <li><span>{{ g.user['username'] }}</span>
@@ -23,4 +25,12 @@
     {% endfor %}
     {% block content %}{% endblock %}
 </section>
+
+<script>
+    var back = document.getElementById('back');
+    back.onclick = function() {
+        window.history.go(-1);
+        location.reload()
+    }
+</script>
 

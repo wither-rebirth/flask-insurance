@@ -13,22 +13,22 @@
 <div class="bar_frame">
     <p class="bar_left">由出险人提供的材料</p>
     <p class="bar_right">共2项</p>
-    <button class="arror" onclick="clear_below_1st()">
-        <img src="../static/image/down-arrow.png">
+    <button class="arror" onclick="clear_below_1st();add_rotate_1st()">
+        <img id="down_arrow_1st" src="../static/image/down-arrow.png">
     </button>
 </div>
 <div id="below_area_1st" class="hidden"> 
     <img src="../static/image/horizontal-line.png">
     <div class="below_area_1">
         <h3>伤者全身照</h3>
-        <button class="example">查看示例</button>
+        <a href="{{ url_for("service.material_example") }}"><button class="example">查看示例</button></a>
         <p>需拍摄者站立或卧床的全身照,确保伤者面部清晰,并可见受伤位置</p>
         <button class="camera_button"><div class="camera"><img style="width: 40px;height: 35px;" src="../static/image/camera.png"></div></button>
     </div>
     <img src="../static/image/horizontal-line.png" style="position: relative;bottom: 24px;">
     <div class="below_area_1" style="bottom:46px">
         <h3>受伤部位特写</h3>
-        <button class="example">查看示例</button>
+        <a href="{{ url_for("service.material_example") }}"><button class="example">查看示例</button></a>
         <p>须可见受伤部位所在的身体位置,及受伤情况</p>
         <button class="camera_button"><div class="camera"><img style="width: 40px;height: 35px;" src="../static/image/camera.png"></div></button>
     </div>
@@ -37,22 +37,22 @@
 <div class="bar_frame">
     <p class="bar_left">事故现场材料 (现场拍照)</p>
     <p class="bar_right">共1项</p>
-    <button class="arror" onclick="clear_below_2rd()">
-        <img src="../static/image/down-arrow.png">
+    <button class="arror" onclick="clear_below_2rd();add_rotate_2rd()">
+        <img id="down_arrow_2rd" src="../static/image/down-arrow.png">
     </button>
 </div>
 <div id="below_area_2rd" class="hidden"> 
     <img src="../static/image/horizontal-line.png">
     <div class="below_area_1">
         <h3>伤者全身照</h3>
-        <button class="example">查看示例</button>
+        <a href="{{ url_for("service.material_example") }}"><button class="example">查看示例</button></a>
         <p>需拍摄者站立或卧床的全身照,确保伤者面部清晰,并可见受伤位置</p>
         <button class="camera_button"><div class="camera"><img style="width: 40px;height: 35px;" src="../static/image/camera.png"></div></button>
     </div>
 </div>
 
 <div class="end_block">
-    <input type="submit" input="保存">
+    <input type="submit" value="保存">
     <div class="end_block_next"><p>提交信息</p></div>
 </div>
 
@@ -78,6 +78,16 @@
         }
     }
 
+    function add_rotate_1st() {
+        let down_arrow = document.getElementById("down_arrow_1st");
+        if (hasClass(down_arrow,'rotate')) {
+            return down_arrow.classList.remove("rotate")
+        }
+        else {
+            return down_arrow.classList.add("rotate")
+        }
+    }
+
     function clear_below_2rd(){
         let below_2rd = document.getElementById("below_area_2rd");
         if (hasClass(below_2rd,'hidden')) {
@@ -85,6 +95,16 @@
         }
         else {
             return below_2rd.classList.add("hidden")
+        }
+    }
+
+    function add_rotate_2rd() {
+        let down_arrow = document.getElementById("down_arrow_2rd");
+        if (hasClass(down_arrow,'rotate')) {
+            return down_arrow.classList.remove("rotate")
+        }
+        else {
+            return down_arrow.classList.add("rotate")
         }
     }
 

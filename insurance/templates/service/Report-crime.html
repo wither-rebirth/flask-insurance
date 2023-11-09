@@ -20,16 +20,13 @@
     <br>
 </div>
 
-<form method="post" autocomplete="off">
 <div id="popup1" style="display:none">
 <div class="cover" onclick="replace()"></div>
 <div>
-    <form method="post">
     <h3>使用身份证号报案</h3>
     <input name="person_idcard" id="person_idcard" value="请输入出险人的身份证号" required
     onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue" />
-    <input class="submit" type="submit" value="提交">
-    </form>
+    <a href="{{ url_for("service.upload_material") }}"><input class="submit" type="submit" value="提交"></a>
 </div>
 </div>
 
@@ -41,10 +38,10 @@
     onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue" />
     <input name="company_name" id="company_name" value="请输入您的企业名称" required
     onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue" />
-    <input class="submit" type="submit" value="提交">
+    <a href="{{ url_for("service.upload_material") }}"><input class="submit" type="submit" value="提交"></a>
 </div>
 </div>
-</form>
+
 <script>
     function replace(){
         var popup1=document.getElementById("popup1");

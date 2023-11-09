@@ -9,67 +9,152 @@
     <div class="left_block"><p>提交出险信息</p></div>
     <div class="right_block"><p>上传出险图片</p></div>
 </div>
-
+<form method="post" style="margin:unset">
 <div class="main_block">
     <p>出险人员</p>
-    <input required>
+    <input name="person_name" required>
 </div>
 
 <div class="main_block">
     <p>出险保单</p>
-    <input required>
+    <input name="insurance_id" required>
 </div>
 
 <div class="main_block">
     <p>出险时间</p>
-    <input type="datetime-local" value="请选择事故发生的时间点" required>
+    <input name="service_date" type="datetime-local" required>
 </div> 
 
 <div class="main_block">
     <p>报案原因</p>
-    <div class="block_left"><p>人员受伤</p></div>
-    <div class="block_right"><p>死亡/身故</p></div>
+    <div onclick="add_blue1()" id="block_choice1" class="block_left">
+       <p>人员受伤</p><input name="service_reason" class="checkbox" style="width:82px;top:-4px" type="checkbox" value="人员受伤">
+    </div>
+    <div onclick="add_blue2()" id="block_choice2" class="block_right">
+        <p>死亡/身故</p><input name="service_reason" class="checkbox" style="width:82px;top:-4px" type="checkbox" value="死亡/身故">
+    </div>
 </div> 
 
 <div class="main_block_1"> 
     <p>人员治疗情况 (可多选)</p>
-    <div class="block_1"><p>门诊治疗</p></div>
-    <div class="block_1" style="left:180px"><p>住院治疗</p></div>
-    <div class="block_1" style="left:290px"><p>重伤抢救</p></div>
-    <div class="block_1" style="left:400px"><p>暂未治疗</p></div>
+    <div id="block_choice3" onclick="add_blue3()" class="block_1">
+        <p>门诊治疗</p><input name="treatment" class="checkbox" style="width:82px;top:-4px" type="checkbox" value="门诊治疗">
+    </div>
+    <div id="block_choice4" onclick="add_blue4()" class="block_1" style="left:180px">
+        <p>住院治疗</p><input name="treatment" class="checkbox" style="width:82px;top:-4px" type="checkbox" value="住院治疗">
+    </div>
+    <div id="block_choice5" onclick="add_blue5()" class="block_1" style="left:290px">
+        <p>重伤抢救</p><input name="treatment" class="checkbox" style="width:82px;top:-4px" type="checkbox" value="重伤抢救">
+    </div>
+    <div id="block_choice6" onclick="add_blue6()" class="block_1" style="left:400px">
+        <p>暂未治疗</p><input name="treatment" class="checkbox" style="width:82px;top:-4px" type="checkbox" value="暂未治疗">
+    </div>
 </div>
 
 <div class="describe">
     <p>事故描述</p>
-    <textarea placeholder="请简要描述事件地点，经过和损失情况" required></textarea>
+    <textarea name="service_description" placeholder="请简要描述事件地点，经过和损失情况" required></textarea>
 </div>
 
 <div class="main_block">
     <p>联系电话</p>
-    <input required>
+    <input name="person_phone" onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue" required>
 </div>
 
 <div class="main_block">
     <p>备用电话(选填)</p>
-    <input value="作为联系不上时的备选电话"
+    <input name="person_rephone"  value="作为联系不上时的备选电话"
     onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue">
 </div>
 
 <div class="main_block">
     <p>电子邮箱(选填)</p>
-    <input value="用于接收理赔材料模版"
+    <input name="person_email" value="用于接收理赔材料模版"
     onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue">
 </div>
 
 <div class="main_block">
     <p>就诊医院(选填)</p>
-    <input value="请输入就诊医院"
+    <input name="service_hospital" value="请输入就诊医院"
     onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue">
 </div>
 
 <div class="end_block">
-    <input type="submit" input="保存">
-    <div class="end_block_next"><p>下一步</p></div>
+    <input type="submit" value="保存">
+    <a href="{{ url_for("service.upload_image") }}"><div class="end_block_next"><p>下一步</p></div>
 </div>
+</form>
 
+<script>
+    function hasClass(element,className){
+        var aSameClassEle = document.getElementsByClassName(className);
+        for(var i = 0;i < aSameClassEle.length;i++){
+            if(aSameClassEle[i] === element){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function add_blue1(){
+        let block_choice1 = document.getElementById("block_choice1");
+        if (hasClass(block_choice1,'blue')) {
+            return block_choice1.classList.remove("blue")      
+        }
+        else {
+            return block_choice1.classList.add("blue")
+        }
+    }
+
+    function add_blue2(){
+        let block_choice2 = document.getElementById("block_choice2");
+        if (hasClass(block_choice2,'blue')) {
+            return block_choice2.classList.remove("blue")
+        }
+        else {
+            return block_choice2.classList.add("blue")
+        }
+    }
+
+    function add_blue3(){
+        let block_choice3 = document.getElementById("block_choice3");
+        if (hasClass(block_choice3,'blue')) {
+            return block_choice3.classList.remove("blue")
+        }
+        else {
+            return block_choice3.classList.add("blue")
+        }
+    }
+
+    function add_blue4(){
+        let block_choice4 = document.getElementById("block_choice4");
+        if (hasClass(block_choice4,'blue')) {
+            return block_choice4.classList.remove("blue")
+        }
+        else {
+            return block_choice4.classList.add("blue")
+        }
+    }
+
+    function add_blue5(){
+        let block_choice5 = document.getElementById("block_choice5");
+        if (hasClass(block_choice5,'blue')) {
+            return block_choice5.classList.remove("blue")
+        }
+        else {
+            return block_choice5.classList.add("blue")
+        }
+    }
+
+    function add_blue6(){
+        let block_choice6 = document.getElementById("block_choice6");
+        if (hasClass(block_choice6,'blue')) {
+            return block_choice6.classList.remove("blue")
+        }
+        else {
+            return block_choice6.classList.add("blue")
+        }
+    }
+        
+</script>
 {% endblock %}

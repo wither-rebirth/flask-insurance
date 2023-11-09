@@ -28,7 +28,7 @@
 <img src="../static/image/horizontal-line.png">
 <div style="height:45px">
     <div class="connect"><p>联系理赔员</p></div>
-    <div class="upload"><p>拍摄上传理赔材料</p></div>
+    <a href="{{ url_for("service.upload_clime")}}"><div class="upload"><p>拍摄上传理赔材料</p></div></a>
 </div>
 </div>
 {% endfor %}
