@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+<form method="post" style="margin:unset" enctype="multipart/form-data">
 <div style="display:flex;margin-top: 10px;">
     <div class="left_block" style="background:skyblue; color:white"><p>提交出险信息</p></div>
     <div class="right_block" style="background:white"><p>上传出险图片</p></div>
@@ -13,9 +14,7 @@
 <div class="bar_frame">
     <p class="bar_left">由出险人提供的材料</p>
     <p class="bar_right">共2项</p>
-    <button class="arror" onclick="clear_below_1st();add_rotate_1st()">
-        <img id="down_arrow_1st" src="../static/image/down-arrow.png">
-    </button>
+    <img class="arror" onclick="clear_below_1st();add_rotate_1st()"  id="down_arrow_1st" src="../static/image/down-arrow.png">
 </div>
 
 <div id="below_area_1st" class="hidden"> 
@@ -24,23 +23,23 @@
         <h3>伤者全身照</h3>
         <a href="{{ url_for("service.material_example") }}"><button class="example">查看示例</button></a>
         <p>需拍摄者站立或卧床的全身照,确保伤者面部清晰,并可见受伤位置</p>
-        <button class="camera_button"><div class="camera"><img style="width: 40px;height: 35px;" src="../static/image/camera.png"></div></button>
+            <div class="camera" style="left:20px"><img style="width: 40px;height: 35px;" src="../static/image/camera.png"></div>
+            <input name="myfile" type="file"  multiple="multiple" class="image_upload camera_button" style="margin-bottom:0px">
     </div>
     <img src="../static/image/horizontal-line.png" style="position: relative;bottom: 24px;">
     <div class="below_area_1" style="bottom:46px">
         <h3>受伤部位特写</h3>
         <a href="{{ url_for("service.material_example") }}"><button class="example">查看示例</button></a>
         <p>须可见受伤部位所在的身体位置,及受伤情况</p>
-        <button class="camera_button"><div class="camera"><img style="width: 40px;height: 35px;" src="../static/image/camera.png"></div></button>
+        <div class="camera" style="left:20px"><img style="width: 40px;height: 35px;" src="../static/image/camera.png"></div>
+        <input name="myfile" type="file" class="image_upload camera_button" style="margin-bottom:0px">
     </div>
 </div>
 
 <div class="bar_frame">
     <p class="bar_left">事故现场材料 (现场拍照)</p>
     <p class="bar_right">共1项</p>
-    <button class="arror" onclick="clear_below_2rd();add_rotate_2rd()">
-        <img id="down_arrow_2rd" src="../static/image/down-arrow.png">
-    </button>
+    <img class="arror" onclick="clear_below_2rd();add_rotate_2rd()" id="down_arrow_2rd" src="../static/image/down-arrow.png">
 </div>
 
 <div id="below_area_2rd" class="hidden"> 
@@ -49,7 +48,8 @@
         <h3>伤者全身照</h3>
         <a href="{{ url_for("service.material_example") }}"><button class="example">查看示例</button></a>
         <p>需拍摄者站立或卧床的全身照,确保伤者面部清晰,并可见受伤位置</p>
-        <button class="camera_button"><div class="camera"><img style="width: 40px;height: 35px;" src="../static/image/camera.png"></div></button>
+        <div class="camera" style="left:20px"><img style="width: 40px;height: 35px;" src="../static/image/camera.png"></div>
+        <input name="myfile" type="file" class="image_upload camera_button" style="margin-bottom:0px">
     </div>
 </div>
 
@@ -60,6 +60,7 @@
         <img src="../static/image/down-arrow.png">
     </button>
 </div>
+
 <div class="bar_frame">
     <p class="bar_left">中企业提供的材料</p>
     <p class="bar_right">共5项</p>
@@ -72,6 +73,7 @@
     <input type="submit" input="保存">
     <div class="end_block_next"><p>提交信息</p></div>
 </div>
+</form>
 
 <script>
     
