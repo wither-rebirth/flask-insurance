@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-
+<body style="background:white">
 <div class="IDcard-card" onclick="add_idcard()">
     <h1>使用身份证号报案</h1>
     <h3>我知道出险人员身份证号报案</h3>
@@ -24,9 +24,9 @@
 <div class="cover" onclick="replace()"></div>
 <div>
     <h3>使用身份证号报案</h3>
-    <input name="person_idcard" id="person_idcard" value="请输入出险人的身份证号" required
+    <input class="input_num" style="margin-bottom:10px" name="person_idcard" id="person_idcard" value="请输入出险人的身份证号" required
     onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue" />
-    <a href="{{ url_for("service.upload_material") }}"><input class="submit" type="submit" value="提交"></a>
+    <a href="{{ url_for("service.upload_material") }}"><input class="submit button_submit" type="submit" value="提交"></a>
 </div>
 </div>
 
@@ -34,14 +34,14 @@
 <div class="cover" onclick="replace()"></div>
 <div>
     <h3>使用姓名+企业名称报案</h3>
-    <input name="person_name" id="person_name" value="请输入您的姓名" required
+    <input class="input_num" style="margin-bottom:10px" name="person_name" id="person_name" value="请输入您的姓名" required
     onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue" />
-    <input name="company_name" id="company_name" value="请输入您的企业名称" required
+    <input class="input_num" style="margin-bottom:10px" name="company_name" id="company_name" value="请输入您的企业名称" required
     onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue" />
-    <a href="{{ url_for("service.upload_material") }}"><input class="submit" type="submit" value="提交"></a>
+    <a href="{{ url_for("service.upload_material") }}"><input class="submit button_submit" type="submit" value="提交"></a>
 </div>
 </div>
-
+</body>
 <script>
     function replace(){
         var popup1=document.getElementById("popup1");

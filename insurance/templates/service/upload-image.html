@@ -8,12 +8,12 @@
 <form action="/image_upload" method="post" style="margin:unset" enctype="multipart/form-data">
 
 <div style="display:flex;margin-top: 10px;">
-    <div class="left_block" style="background:skyblue; color:white"><p>提交出险信息</p></div>
-    <div class="right_block" style="background:white"><p>上传出险图片</p></div>
+    <div class="left_block" style="background:rgb(128,128,128,0.5); color:white"><p>提交出险信息</p></div>
+    <div class="right_block" style="background:white;color:royalblue"><p>上传出险图片</p></div>
 </div>
 
 <div class="bar_frame">
-    <p class="bar_left">由出险人提供的材料</p>
+    <p class="bar_left" style="font-weight: 500;letter-spacing: 0.5px;">由出险人提供的材料</p>
     <p class="bar_right">共2项</p>
     <img class="arror" onclick="clear_below_1st();add_rotate_1st()"  id="down_arrow_1st" src="../static/image/down-arrow.png">
 </div>
@@ -34,11 +34,11 @@
         <a href="{{ url_for("service.material_example") }}"><button class="example">查看示例</button></a>
         <p>须可见受伤部位所在的身体位置,及受伤情况</p>
         <div class="camera" style="left:20px"><img style="width: 40px;height: 35px;" src="../static/image/camera.png"></div>
-        <input name="myfile" type="file" class="image_upload camera_button" style="margin-bottom:0px">
+        <input name="myfile_1" type="file" class="image_upload camera_button" style="margin-bottom:0px">
     </div>
 </div>
 
-<div class="bar_frame">
+<div class="bar_frame" style="font-weight: 500;letter-spacing: 0.5px;">
     <p class="bar_left">事故现场材料 (现场拍照)</p>
     <p class="bar_right">共1项</p>
     <img class="arror" onclick="clear_below_2rd();add_rotate_2rd()" id="down_arrow_2rd" src="../static/image/down-arrow.png">
@@ -51,13 +51,13 @@
         <a href="{{ url_for("service.material_example") }}"><button class="example">查看示例</button></a>
         <p>需拍摄者站立或卧床的全身照,确保伤者面部清晰,并可见受伤位置</p>
         <div class="camera" style="left:20px"><img style="width: 40px;height: 35px;" src="../static/image/camera.png"></div>
-        <input name="myfile" type="file" class="image_upload camera_button" style="margin-bottom:0px">
+        <input name="myfile_2" type="file" class="image_upload camera_button" style="margin-bottom:0px">
     </div>
 </div>
 
 <div class="end_block">
-    <input type="submit" value="保存">
-    <div class="end_block_next"><p>提交信息</p></div>
+    <input class="save" type="submit" value="保存">
+    <input type="submit" value="下一步" class="end_block_next">
 </div>
 
 </form>
