@@ -380,13 +380,17 @@ html {
     border-radius: 20px;
     height: 35px;
     border: none;
-    position: relative;
-    right: 15px;
+    min-width: 80px;
+    position: absolute;
+    right: 50px;
+    font-size: 15px;
   }
 
   #no-record {
     text-align:center;
     height:800px;
+    position: relative;
+    top: 50px
   }
 
   .health img {
@@ -409,7 +413,14 @@ html {
     margin-top: 5px;
     margin-bottom: 5px;
     list-style-type: none;
-    padding-inline-start: 20px
+    padding-inline-start: 20px;
+    display: flex;
+    position: relative;
+  }
+
+  .right_hand {
+    position: absolute;
+    left: 100px;
   }
 
   .flex {
@@ -427,22 +438,33 @@ html {
     width: 100px;
     height: 30px;
     line-height: 0px;
-    background: rgb(220,220,220,0.1);
-    border-width: thin;
+    color: rgb(0,0,0,0.6);
+    background: rgb(220,220,220,0.2);
+    border-width: 0.1px;
+    border-radius: 4px;
   }
 
   .upload {
     position: absolute;
     right: 25px;
-    color: blue;
+    color: cornflowerblue;
     text-align: center;
     border: black;
     border-style: solid;
-    width: 135px;
+    width: 140px;
     height: 32px;
     line-height: 0px;
     background: rgb(220,220,220,0.1);
-    border-width: thin;
+    border-width: 0.1px;
+    border-color: mediumblue;
+    border-radius: 4px;
+  }
+
+
+
+  .left_side{
+    color: rgb(128,128,128,0.7);
+    left:-20px;
   }
 
   .left_block {
@@ -818,4 +840,32 @@ html {
     left: 20px;
     margin-bottom: 0px;
     opacity: 0;
+  }
+
+  .query_block {
+    padding-top: 10px;
+    display: flex;
+    position: relative;
+    left: 15px;
+  }
+
+  .query_line {
+    text-indent: 35px;
+    background: rgb(198,198,201,0.2);
+    color: rgb(128,128,128);
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    width: 500px;
+    height: 35px;
+    border: unset;
+    border-radius: 20px;
+    outline: none;
+  }
+
+  .search {
+    position: absolute;
+    left: 15px;
+    top: 20px;
+    width: 16px;
+    height: 16px;
   }

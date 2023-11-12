@@ -103,15 +103,14 @@ def upload_image():
             path_part = "../static/upload/" + filename_part
             path_accident = "../static/upload/" + filename_accident
             
-            db = get_db()
-            db.execute(
-                'INSERT INTO service (image_path_whole, image_path_part, image_path_accident, service_id)'
-                ' VALUES (?, ?, ?, ?)',
-                (path_whole, path_part, path_accident, g.user['id'])
-                
-            )
-            db.commit()
-    
+        db = get_db()
+        db.execute(
+            'UPDATE service'
+            ' SET image_path_whole = ?, image_path_part = ?, image_path_accident = ?'
+            ' WHERE service_id = ?',
+            (path_whole, path_part, path_accident, g.user['id'])
+        )
+        db.commit()
         return redirect(url_for('service.progress_query'))
             
   
@@ -126,30 +125,47 @@ def material_example():
 @bp.route('/query', methods=("GET", "POST"))
 @login_required
 def progress_query():
-    crime_id = request.form.get('crime_id')
+    if request.method == "POST":
+        query_name = request.form['myquery']
+        
+        db = get_db()
+        services = db.execute(
+            'SELECT person_name, crime_id, insurance_id, service_date, case_progress, case_status'
+            ' FROM person p JOIN service s ON p.id = s.service_id'
+            ' WHERE person_name = ?',
+            (query_name,)
+        ).fetchall()
+        return render_template('service/Progress-query.html', services = services)
+    return render_template('service/Progress-query.html')
+
+#点击块级元素，跳转详细信息,需要撤销就使用delete，还得判断是否为个人用户，不能让别人改其他人的。需要补充就选择使用更新
+
+@bp.route('/<int:insurance_id>/detail', methods=("GET", "POST"))
+@login_required
+def query_detail(insurance_id):
+    insurance_id = insurance_id
     db = get_db()
-    services = db.execute(
-        'SELECT p.id, p.person_name, crime_id, insurance_id, service_date, case_progress, case_status'
+    post = db.execute(
+        'SELECT person_name, person_gender, person_birth, person_phone, service_date, service_reason, treatment, service_description, crime_id, insurance_id'
         ' FROM person p JOIN service s ON p.id = s.service_id'
-        ' WHERE p.person_name = ?',
-        (crime_id,)
+        ' WHERE insurance_id = ?',
+        (insurance_id,)
     ).fetchone()
-    if services is None :
-        return redirect(url_for('service.progress_query_no'))
-    else:
-        return redirect(url_for('service.progress_query_something', services=services))
-    
-    return render_template('service/Progress-query.html')    
+    return render_template('service/query-detail.html', post=post)
 
-@bp.route('/query/nothing')
+@bp.route('/<int:insurance_id>/delete', methods=("GET","POST"))
 @login_required
-def progress_query_no():
-    return render_template('service/Progress-query-no.html')
-
-@bp.route('/query/something')
-@login_required
-def progress_query_something():
-    return render_template('service/Progress-query-some.html')
+def query_delete(insurance_id):
+    insurance_id = insurance_id
+    db = get_db()
+    db.execute(
+        'DELETE'
+        ' FROM service'
+        ' WHERE insurance_id = ?',
+        (insurance_id,)
+    )
+    db.commit()
+    return redirect(url_for('service.index'))
 
 
 #提交理赔材料，需要审核后才能提交，如果驳回则需要重新提交
@@ -172,9 +188,3 @@ def upload_clime():
     return render_template('service/upload-clime.html')
 
 
-#点击块级元素，跳转详细信息,需要撤销就使用delete，还得判断是否为个人用户，不能让别人改其他人的。需要补充就选择使用更新
-@bp.route('/detail', methods=("GET", "POST"))
-@login_required
-def query_detail():
-    
-    return render_template('service/query-detail.html')

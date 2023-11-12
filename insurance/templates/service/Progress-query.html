@@ -6,10 +6,48 @@
 
 {% block content %}
 <form method="post" autocomplete="off">
-<div style="padding-top:10px; display:flex">
-    <input id="crime_id" value="输入出险人姓名、报案号查询"
+<div class="query_block">
+    <img class="search" src="../static/image/search.png">
+    <input name="myquery" class="query_line" id="crime_id" value="输入出险人姓名、报案号查询"
     onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue" />
     <input class='check' style="min-width:80px" type="submit" value="搜索">
 </div>
+
+{% if not services %}
+<div id="no-record">
+    <img style="width:300px" src="../static/image/no-record.png">
+    <p>暂无理赔记录</p>
+</div>
+{% endif %}
+
+{% for service in services %}
+<a style="text-decoration:none; color:black" href="{{ url_for('service.query_detail', insurance_id=service['insurance_id']) }}">
+<div class="query">
+    <div class="flex">
+    <h3 style="padding-left:15px">出险人: {{ service['person_name']}} </h3>
+    <p style="position: absolute;right: 15px;">{{ service['case_status'] }}</p>
+    </div>
+<img src="../static/image/horizontal-line.png">
+    <ul>
+        <li style="letter-spacing:4px;color: rgb(128,128,128,0.7);">报案号:</li><li class="right_hand">{{ service['crime_id'] }}</li>
+    </ul>
+    <ul>
+        <li style="letter-spacing:4px;color: rgb(128,128,128,0.7);">保单号:</li><li class="right_hand">{{ service['insurance_id'] }}</li>
+    </ul>
+    <ul>
+        <li style="color: rgb(128,128,128,0.7);">出险时间:</li><li class="right_hand">{{ service['service_date'] }}</li>
+    </ul>
+    <ul>
+        <li style="color: rgb(128,128,128,0.7);">案件进展:</li><li class="right_hand">{{ service['case_progress'] }}</li>
+    </ul>
+<img src="../static/image/horizontal-line.png">
+</a>
+<div style="height:45px">
+    <div class="connect"><p>联系理赔员</p></div>
+    <a href="{{ url_for("service.upload_clime")}}"><div class="upload"><p>拍摄上传理赔材料</p></div></a>
+</div>
+</div>
+{% endfor %}
+
 </form>
 {% endblock %}
