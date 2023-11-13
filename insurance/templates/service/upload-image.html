@@ -25,7 +25,7 @@
         <a href="{{ url_for("service.material_example") }}"><button class="example">查看示例</button></a>
         <p>需拍摄者站立或卧床的全身照,确保伤者面部清晰,并可见受伤位置</p>
             <div class="camera" style="left:20px"><img style="width: 40px;height: 35px;" src="../static/image/camera.png"></div>
-            <input name="myfile" type="file"  multiple="multiple" class="image_upload camera_button" style="margin-bottom:0px">
+            <input name="myfile" type="file"  multiple="multiple" required class="image_upload camera_button" style="margin-bottom:0px">
     </div>
 
     <img src="../static/image/horizontal-line.png" style="position: relative;bottom: 24px;">
@@ -34,7 +34,7 @@
         <a href="{{ url_for("service.material_example") }}"><button class="example">查看示例</button></a>
         <p>须可见受伤部位所在的身体位置,及受伤情况</p>
         <div class="camera" style="left:20px"><img style="width: 40px;height: 35px;" src="../static/image/camera.png"></div>
-        <input name="myfile_1" type="file" class="image_upload camera_button" style="margin-bottom:0px">
+        <input name="myfile_1" type="file" required class="image_upload camera_button" style="margin-bottom:0px">
     </div>
 </div>
 
@@ -51,7 +51,7 @@
         <a href="{{ url_for("service.material_example") }}"><button class="example">查看示例</button></a>
         <p>需拍摄者站立或卧床的全身照,确保伤者面部清晰,并可见受伤位置</p>
         <div class="camera" style="left:20px"><img style="width: 40px;height: 35px;" src="../static/image/camera.png"></div>
-        <input name="myfile_2" type="file" class="image_upload camera_button" style="margin-bottom:0px">
+        <input name="myfile_2" type="file" required class="image_upload camera_button" style="margin-bottom:0px">
     </div>
 </div>
 

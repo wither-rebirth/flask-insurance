@@ -6,6 +6,7 @@ from insurance.auth import login_required
 from insurance.db import get_db
 import time
 import os
+import random
 
 bp = Blueprint('service', __name__)
 
@@ -25,21 +26,47 @@ def index():
 #report crime
 @bp.route('/report', methods=('GET', 'POST'))
 @login_required
-def report_crime_idcard():
+def report_crime():
     #这里使用查询，为了确保这个人确实有投过保， 还得确保过保多少天后可以报案
+    if request.method == 'POST':
+        person_idcard = request.form['person_idcard']
+        company_name = request.form['company_name']
+        
+#此处进行对报案号和保单号的自动生成：
+        today = time.strftime("%Y%m%d",time.localtime(time.time()))
+        charset_word = "ABCDEFGHIGKLMNOPQRSTUVWXYZ"
+        charset_num = "012345678901234567890123456789"
+        result = random.sample(charset_word, 4)
+        result_1 = random.sample(charset_num, 6)
+        result_2 = random.sample(charset_word, 1)
+        result_3 = random.sample(charset_num, 21)
+        
+        crime_id = "".join(result) + today + "".join(result_1)
+        insurance_id = "".join(result_2) + "".join(result_3)
+        db = get_db()
+        db.execute(
+            'INSERT INTO person (person_idcard, company_name, crime_id, insurance_id, person_id)'
+            ' VALUES (?, ?, ?, ?, ?)',
+            (person_idcard, company_name, crime_id, insurance_id, g.user['id'])
+        )
+        db.commit()
+        
+        return redirect(url_for("service.upload_material"))
+    
     return render_template('service/Report-crime.html') 
 
 @bp.route('/material_upload', methods=("GET", "POST"))
 @login_required
 def upload_material():
     if request.method == 'POST':
-        insurance_id = request.form['insurance_id']
         service_date = request.form['service_date']
         service_reason = request.form['service_reason']
         treatment = request.form['treatment']
         service_description = request.form['service_description']
         service_hospital = request.form['service_hospital']
         person_name = request.form['person_name']
+        person_gender = request.form['person_gender']
+        person_birth = request.form['person_birth']
         person_phone = request.form['person_phone']
         person_rephone = request.form['person_rephone']
         person_email = request.form['person_email']
@@ -50,15 +77,16 @@ def upload_material():
         else:
             db = get_db()
             db.execute(
-                'INSERT INTO service (insurance_id, service_date, service_reason, treatment, service_description, service_hospital, service_id)'
-                ' VALUES (?, ?, ?, ?, ?, ?, ?)',
-                (insurance_id, service_date, service_reason, treatment, service_description, service_hospital, g.user['id'])   
+                'INSERT INTO service (service_date, service_reason, treatment, service_description, service_hospital, service_id)'
+                ' VALUES (?, ?, ?, ?, ?, ?)',
+                (service_date, service_reason, treatment, service_description, service_hospital, g.user['id'])   
             )
             db.commit()
             db.execute(
-                'INSERT INTO person (person_name, person_phone, person_rephone, person_email, person_id)' 
-                ' VALUES (?, ?, ?, ?, ?)',
-                (person_name, person_phone, person_rephone, person_email, g.user['id'])
+                'UPDATE person'
+                ' SET person_name = ?, person_gender = ?, person_birth = ?, person_phone = ?, person_rephone = ?, person_email = ?'
+                ' WHERE person_id = ?',
+                (person_name, person_gender, person_birth, person_phone, person_rephone, person_email, g.user['id'])
             )
             db.commit()
             return redirect(url_for("service.upload_image"))
@@ -99,9 +127,9 @@ def upload_image():
             f.save(os.path.join(file_dir, filename_accident))
             print(filename_accident)
     
-            path_whole = "../static/upload/" + filename_whole
-            path_part = "../static/upload/" + filename_part
-            path_accident = "../static/upload/" + filename_accident
+            path_whole = "insurance/static/upload/" + filename_whole
+            path_part = "insurance/static/upload/" + filename_part
+            path_accident = "insurance/static/upload/" + filename_accident
             
         db = get_db()
         db.execute(
@@ -130,7 +158,7 @@ def progress_query():
         
         db = get_db()
         services = db.execute(
-            'SELECT person_name, crime_id, insurance_id, service_date, case_progress, case_status'
+            'SELECT person_name, service_id, crime_id, insurance_id, service_date, case_progress, case_status'
             ' FROM person p JOIN service s ON p.id = s.service_id'
             ' WHERE person_name = ?',
             (query_name,)
@@ -140,29 +168,48 @@ def progress_query():
 
 #点击块级元素，跳转详细信息,需要撤销就使用delete，还得判断是否为个人用户，不能让别人改其他人的。需要补充就选择使用更新
 
-@bp.route('/<int:insurance_id>/detail', methods=("GET", "POST"))
+@bp.route('/<int:service_id>/detail', methods=("GET", "POST"))
 @login_required
-def query_detail(insurance_id):
-    insurance_id = insurance_id
+def query_detail(service_id):
+    service_id = service_id
     db = get_db()
     post = db.execute(
-        'SELECT person_name, person_gender, person_birth, person_phone, service_date, service_reason, treatment, service_description, crime_id, insurance_id'
+        'SELECT person_name, person_gender, person_birth, person_phone, service_date, service_reason, treatment, service_description, crime_id, insurance_id, service_id'
         ' FROM person p JOIN service s ON p.id = s.service_id'
-        ' WHERE insurance_id = ?',
-        (insurance_id,)
+        ' WHERE service_id = ?',
+        (service_id,)
     ).fetchone()
     return render_template('service/query-detail.html', post=post)
 
-@bp.route('/<int:insurance_id>/delete', methods=("GET","POST"))
+@bp.route('/<int:service_id>/delete', methods=("GET","POST"))
 @login_required
-def query_delete(insurance_id):
-    insurance_id = insurance_id
+def query_delete(service_id):
+    service_id = service_id
     db = get_db()
+    
+    path = db.execute(
+        'SELECT image_path_whole, image_path_part, image_path_accident'
+        ' FROM service s'
+        ' WHERE service_id = ?',
+        (service_id,)
+    ).fetchone()
+    path_whole = path['image_path_whole']
+    path_part = path['image_path_part']
+    path_accident = path['image_path_accident']
+    os.remove(path_whole)
+    os.remove(path_part)
+    os.remove(path_accident)
+    
     db.execute(
-        'DELETE'
-        ' FROM service'
-        ' WHERE insurance_id = ?',
-        (insurance_id,)
+        'DELETE FROM person'
+        ' WHERE id = ?',
+        (service_id,)
+    )
+    
+    db.execute(
+        'DELETE FROM service'
+        ' WHERE service_id = ?',
+        (service_id,)
     )
     db.commit()
     return redirect(url_for('service.index'))

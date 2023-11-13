@@ -21,7 +21,7 @@
 {% endif %}
 
 {% for service in services %}
-<a style="text-decoration:none; color:black" href="{{ url_for('service.query_detail', insurance_id=service['insurance_id']) }}">
+<a style="text-decoration:none; color:black" href="{{ url_for('service.query_detail', service_id=service['service_id']) }}">
 <div class="query">
     <div class="flex">
     <h3 style="padding-left:15px">出险人: {{ service['person_name']}} </h3>
