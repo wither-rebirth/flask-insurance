@@ -2,12 +2,7 @@
 <title>{% block title %}{% endblock %} - insurance</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
-<nav>
-    <a id="back" href="javascript:history.go(-1);" rel="external nofollow">
-        <img src="../static/image/return.png"></a>
-    <a href={{url_for('service.index')}} >
-        <img id="index"  src="../static/image/index.png"></a>
-
+<nav style="justify-content: flex-end;">
     <ul>
         {% if g.user %}
         <li><span>{{ g.user['username'] }}</span>
@@ -27,12 +22,3 @@
     {% endfor %}
     {% block content %}{% endblock %}
 </section>
-
-<script>
-    var back = document.getElementById('back');
-    back.onclick = function() {
-        window.history.go(-1);
-        location.reload()
-    }
-</script>
-

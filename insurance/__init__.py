@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+import logging
 
 def create_app(test_config=None):
     #create and configure the app

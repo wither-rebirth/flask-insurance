@@ -31,7 +31,6 @@ def report_crime():
     if request.method == 'POST':
         person_idcard = request.form['person_idcard']
         company_name = request.form['company_name']
-        
 #此处进行对报案号和保单号的自动生成：
         today = time.strftime("%Y%m%d",time.localtime(time.time()))
         charset_word = "ABCDEFGHIGKLMNOPQRSTUVWXYZ"
@@ -65,6 +64,7 @@ def report_crime():
         )
         db.commit()
         return redirect(url_for('service.upload_material'))
+        
     return render_template('service/Report-crime.html') 
 
 @bp.route('/material_upload', methods=("GET", "POST"))
@@ -89,7 +89,7 @@ def upload_material():
             flash(error)
         else:
             db = get_db()
-#最主要的问题在这里，解决方案就是从上面获取service_id 并传到下面来，就完事了，因为service_id 是unique，所以这一定是最好的判断条件           
+#最主要的问题在这里，解决方案就是从上面获取insurance_id 并传到下面来，就完事了，因为insurance_id 是unique，所以这一定是最好的判断条件           
             db.execute(
                 'UPDATE service'
                 ' SET service_date = ?, service_reason = ?, treatment = ?, service_description = ?, service_hospital = ?'
@@ -253,4 +253,27 @@ def upload_clime():
   
     return render_template('service/upload-clime.html')
 
+#错误反应：
+@bp.errorhandler(400)
+def bad_request(e):
+    return render_template('400.html'), 400
+
+
+@bp.errorhandler(404)
+def not_found(e):
+    return render_template('404.html'), 404
+
+@bp.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
+
+@bp.errorhandler(405)
+def method_not_allowed(e):
+    # if a request has the wrong method to our API
+    if request.path.startswith('/api/'):
+        # we return a json saying so
+        return jsonify(message="Method Not Allowed"), 405
+    else:
+        # otherwise we return a generic site-wide 405 page
+        return render_template("405.html"), 405
 

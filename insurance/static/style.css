@@ -461,6 +461,12 @@ html {
   }
 
 
+  #index {
+    position: absolute;
+    left: 50px;
+    width: 20px;
+    height: 20px;
+  }
 
   .left_side{
     color: rgb(128,128,128,0.7);

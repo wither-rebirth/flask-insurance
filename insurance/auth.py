@@ -54,6 +54,9 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
+            session['loggedin'] = True
+            session['username'] = user['username']
+            message = "Logged in sucessfully !"
             return redirect(url_for('index'))
         
         flash(error)
@@ -72,7 +75,9 @@ def load_logged_in_user():
         
 @bp.route('/logout')
 def logout():
-    session.clear()
+    session.pop('loggedin', None)
+    session.pop('user_id', None)
+    session.pop('username', None)
     return redirect(url_for('index'))
 
 def login_required(view):
