@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for, Flask, send_from_directory, jsonify
+    Blueprint, flash, g, redirect, render_template, request, url_for, Flask, send_from_directory, jsonify, session
 )
 from werkzeug.exceptions import abort
 from insurance.auth import login_required
@@ -43,21 +43,34 @@ def report_crime():
         
         crime_id = "".join(result) + today + "".join(result_1)
         insurance_id = "".join(result_2) + "".join(result_3)
+        session['insurance_id'] = insurance_id
+        
         db = get_db()
         db.execute(
-            'INSERT INTO person (person_idcard, company_name, crime_id, insurance_id, person_id)'
+            'INSERT INTO person (person_idcard, company_name, crime_id, insurance_id, user_id)'
             ' VALUES (?, ?, ?, ?, ?)',
             (person_idcard, company_name, crime_id, insurance_id, g.user['id'])
         )
         db.commit()
         
-        return redirect(url_for("service.upload_material"))
-    
+        person = db.execute(
+            'SELECT id FROM person WHERE insurance_id = ?',
+            (insurance_id,)
+        ).fetchone()
+        
+        db.execute(
+            'INSERT INTO service (service_insurance, service_id)'
+            ' VALUES (?, ?)',
+            (insurance_id, person['id'])
+        )
+        db.commit()
+        return redirect(url_for('service.upload_material'))
     return render_template('service/Report-crime.html') 
 
 @bp.route('/material_upload', methods=("GET", "POST"))
 @login_required
 def upload_material():
+    insurance_id = session.get('insurance_id')
     if request.method == 'POST':
         service_date = request.form['service_date']
         service_reason = request.form['service_reason']
@@ -76,27 +89,30 @@ def upload_material():
             flash(error)
         else:
             db = get_db()
+#最主要的问题在这里，解决方案就是从上面获取service_id 并传到下面来，就完事了，因为service_id 是unique，所以这一定是最好的判断条件           
             db.execute(
-                'INSERT INTO service (service_date, service_reason, treatment, service_description, service_hospital, service_id)'
-                ' VALUES (?, ?, ?, ?, ?, ?)',
-                (service_date, service_reason, treatment, service_description, service_hospital, g.user['id'])   
+                'UPDATE service'
+                ' SET service_date = ?, service_reason = ?, treatment = ?, service_description = ?, service_hospital = ?'
+                ' WHERE service_insurance = ?',
+                (service_date, service_reason, treatment, service_description, service_hospital, insurance_id)   
             )
             db.commit()
+            
             db.execute(
                 'UPDATE person'
                 ' SET person_name = ?, person_gender = ?, person_birth = ?, person_phone = ?, person_rephone = ?, person_email = ?'
-                ' WHERE person_id = ?',
-                (person_name, person_gender, person_birth, person_phone, person_rephone, person_email, g.user['id'])
+                ' WHERE insurance_id = ?',
+                (person_name, person_gender, person_birth, person_phone, person_rephone, person_email, insurance_id)
             )
             db.commit()
             return redirect(url_for("service.upload_image"))
-    
     
     return render_template('service/upload-material.html')
 
 @bp.route('/image_upload', methods=("GET", "POST"), strict_slashes=False)
 @login_required
 def upload_image():
+    insurance_id = session.get('insurance_id')
     # 拼接成合法文件夹地址
     if request.method == "POST":
         file_dir = os.path.join(basedir + "/static", 'upload')    
@@ -132,14 +148,17 @@ def upload_image():
             path_accident = "insurance/static/upload/" + filename_accident
             
         db = get_db()
+        #这里也一样，将insurance_id 传到下面来就可以了
         db.execute(
             'UPDATE service'
             ' SET image_path_whole = ?, image_path_part = ?, image_path_accident = ?'
-            ' WHERE service_id = ?',
-            (path_whole, path_part, path_accident, g.user['id'])
+            ' WHERE service_insurance = ?',
+            (path_whole, path_part, path_accident, insurance_id)
         )
         db.commit()
-        return redirect(url_for('service.progress_query'))
+        #清除session
+        session.clear
+        return redirect(url_for('service.index'))
             
   
     return render_template('service/upload-image.html')

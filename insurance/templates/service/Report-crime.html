@@ -5,7 +5,6 @@
 {% endblock %}
 
 {% block content %}
-<form method = "post">
 <body style="background:white">
 <div class="IDcard-card" onclick="add_idcard()">
     <h1>使用身份证号报案</h1>
@@ -20,6 +19,8 @@
 <div style="height:300px">
     <br>
 </div>
+
+<form method = "post" >
 
 <div id="popup1" style="display:none">
 <div class="cover" onclick="replace()"></div>
@@ -39,7 +40,7 @@
     onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue" />
     <input class="input_num" style="margin-bottom:10px" name="company_name" id="company_name" value="请输入您的企业名称" required
     onfocus = "if (value==defaultValue)value=''" onblur="if(!value)value=defaultValue" />
-    <a href="{{ url_for('service.upload_material', insurance_id=insurance_id) }}"><input class="submit button_submit" type="submit" value="提交"></a>
+    <input class="submit button_submit" type="submit" value="提交">
 </div>
 </div>
 </body>
