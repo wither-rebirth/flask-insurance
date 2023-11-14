@@ -235,23 +235,57 @@ def query_delete(service_id):
 
 
 #提交理赔材料，需要审核后才能提交，如果驳回则需要重新提交
-@bp.route('/clime_upload', methods=("GET", "POST"))
+@bp.route('/<int:service_id>/clime_upload', methods=("GET", "POST"))
 @login_required
-def upload_clime():
+def upload_clime(service_id):
+    service_id = service_id
+    db = get_db()
+    
     if request.method == "POST":
-        file_dir = os.path.join(basedir, 'upload')  # 拼接成合法文件夹地址
-        if not os.path.exists(file_dir):
-            os.makedirs(file_dir)  # 文件夹不存在就创建
-        f = request.files['myfile']  # 从表单的file字段获取文件，myfile为该表单的name值
+        file_dir = os.path.join(basedir + "/static", 'upload')    
+        f = request.files['myfile']
         if f and allowed_file(f.filename):  # 判断是否是允许上传的文件类型
             fname = f.filename
             ext = fname.rsplit('.', 1)[1]  # 获取文件后缀
             unix_time = int(time.time())
-            new_filename = str(unix_time) + '.' + ext  # 修改文件名
-            f.save(os.path.join(file_dir, new_filename))  # 保存文件到upload目录
-            return redirect(url_for('service.progress_query'))
+            filename_whole = str(unix_time) + '.' + ext  # 修改文件名
+            f.save(os.path.join(file_dir, filename_whole))  # 保存文件到upload目录
+            print(filename_whole)
+        
+        f_1 = request.files['myfile_1']
+        if f_1 and allowed_file(f_1.filename):
+            fname = f_1.filename
+            ext = fname.rsplit('.', 1)[1]
+            unix_time = int(time.time()+1)
+            filename_part = str(unix_time) + '.' + ext
+            f.save(os.path.join(file_dir, filename_part))
+            print(filename_part)
+            
+        f_2 = request.files['myfile_2']
+        if f_2 and allowed_file(f_2.filename):
+            fname = f_2.filename
+            ext = fname.rsplit('.', 1)[1]
+            unix_time = int(time.time()+2)
+            filename_accident = str(unix_time) + '.' + ext
+            f.save(os.path.join(file_dir, filename_accident))
+            print(filename_accident)
+    
+            path_whole = "insurance/static/upload/" + filename_whole
+            path_part = "insurance/static/upload/" + filename_part
+            path_accident = "insurance/static/upload/" + filename_accident
+            
+        #这里也一样，将insurance_id 传到下面来就可以了
+        db.execute(
+            'UPDATE service'
+            ' SET image_path_whole = ?, image_path_part = ?, image_path_accident = ?'
+            ' WHERE service_id = ?',
+            (path_whole, path_part, path_accident, service_id)
+        )
+        db.commit()
+        return redirect(url_for('service.index'))
   
     return render_template('service/upload-clime.html')
+
 
 #错误反应：
 @bp.errorhandler(400)
