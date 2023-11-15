@@ -1,7 +1,0 @@
-{% extends "base_error.html" %}
-{% block title %}Internal Server Error{% endblock %}
-{% block body %}
-  <h1>Invaild request from server</h1>
-  <p>Please try again !</p>
-  <p><a href="{{ url_for('service.index') }}">Go somewhere nice instead</a>
-{% endblock %}

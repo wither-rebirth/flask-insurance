@@ -1,0 +1,37 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - insurance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<nav>
+    <a id="back" href="javascript:history.go(-1);" rel="external nofollow">
+        <img src="../static/image/return.png"></a>
+    <a href={{url_for('.index')}} >
+        <img id="index"  src="../static/image/index.png"></a>
+
+    <ul>
+        {% if g.user %}
+        <li><span>{{ g.user['username'] }}</span>
+        <li><a href="{{ url_for('manage.logout') }}">Log Out</a>
+        {% else %}
+        <li><a href="{{ url_for('manage.register') }}">Register</a>
+        <li><a href="{{ url_for('manage.login') }}">Log In</a>
+        {% endif %}
+    </ul>
+</nav>
+<section class="content">
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+</section>
+
+<script>
+    var back = document.getElementById('back');
+    back.onclick = function() {
+        window.history.go(-1);
+        location.reload()
+    }
+</script>
