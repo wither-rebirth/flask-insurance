@@ -11,6 +11,12 @@ import re
 import random
 
 bp = Blueprint('manage', __name__, url_prefix='/manage')
+
+@bp.route('/', methods=('GET', 'POST'))
+def view():
+    return render_template('manage/view.html')
+
+
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST' and 'email' in request.form and 'password' in request.form:

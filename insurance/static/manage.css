@@ -57,7 +57,6 @@ html {
 
 .fourth p {
     position: absolute;
-    margin-top: 2px;
     font-size: 12px;
     color: rgb(128,128,128,0.7);
 }
@@ -151,4 +150,19 @@ html {
     /*保证视频充满屏幕*/
     object-fit: cover;
     min-height: 800px;
+}
+
+.slogan {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 684px;
+    color: white;
+    text-align: center;
+}
+
+.slogan a {
+    text-decoration: none;
+    color: rgb(128,128,128,0.7);
 }
