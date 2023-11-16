@@ -69,7 +69,7 @@ def register():
             db.commit()
             message = "You have successfully registered !"
             
-            return redirect(url_for('manage.login'))
+            #return redirect(url_for('manage.login'))
         
         flash(error)
     return render_template('manage/register.html')

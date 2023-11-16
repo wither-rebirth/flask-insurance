@@ -1,15 +1,42 @@
-{% extends 'base_manager.html' %}
-{% block header %}
-<h1>{% block title %}Log In{% endblock %}</h1>
-{% endblock %}
+<!doctype html>
+<link rel="stylesheet" href="{{ url_for('static', filename='manage.css') }}">
 
-{% block content %}
-<form method="post">
-    <label for="email">Email</label>
-    <input name="email" id="email" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Log In">
-</form>
+<div class="video-box" style="display:none">
+    <video class="video-background" preload="auto" loop playsinline autoplay src="../static/image/starsky.mp4" tabindex="-1" muted="muted"></video>
+ </div>
 
-{% endblock %} 
+<div class="main_block">
+    <div class="left-side">
+       <div class="first"><span class="first_span">We are</span> wither</div>
+
+       <div class="second"><p>Welcome Back, Please login</p>
+        <p>to your account</p></div>
+
+        <div class="third">
+            <input  name="email" type="email" autocomplete="off">
+            <p style="top:5px">Email Address</p>
+            <input style="top:62px" name="password" type="password">
+            <p style="top:65px">Password</p>
+        </div>
+
+        <div class="fourth">
+            <input type="checkbox">
+            <p style="left:25px">Remember me</p>
+            <p style="right:120px">forget password</p>
+        </div>
+
+        <div class="fifth">
+        <div class="login">
+            <p>Login</p>
+        </div>
+        <div class="sign">
+            <p>Sign up</p>
+        </div>
+        </div>
+
+    </div>
+
+    <div class="right-side">
+        <p>hello</p>
+    </div>
+</div>

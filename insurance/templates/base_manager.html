@@ -1,11 +1,12 @@
 <!doctype html>
 <title>{% block title %}{% endblock %} - insurance</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='manage.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<!--
 <nav>
     <a id="back" href="javascript:history.go(-1);" rel="external nofollow">
         <img src="../static/image/return.png"></a>
-    <a href={{url_for('.index')}} >
+    <a>
         <img id="index"  src="../static/image/index.png"></a>
 
     <ul>
@@ -18,6 +19,12 @@
         {% endif %}
     </ul>
 </nav>
+-->
+<div>
+    <div></div>
+    <div></div>
+</div>
+<!--
 <section class="content">
     <header>
         {% block header %}{% endblock %}
@@ -27,7 +34,7 @@
     {% endfor %}
     {% block content %}{% endblock %}
 </section>
-
+-->
 <script>
     var back = document.getElementById('back');
     back.onclick = function() {
