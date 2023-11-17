@@ -19,7 +19,7 @@ def view():
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
-    if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
+    if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
         db = get_db()
@@ -49,7 +49,7 @@ def login():
 def register():
     message = ""
     
-    if request.method == "POST" and 'email' in request.form and 'password' in request.form and 'name' in request.form:
+    if request.method == "POST":
         email = request.form['email']
         password = request.form['password']
         name = request.form['name']
@@ -79,6 +79,10 @@ def register():
         
         flash(error)
     return render_template('manage/register.html')
+
+@bp.route('/index', methods=("GET", "POST"))
+def index():
+    return render_template('manage/index.html')
 
 @bp.before_app_request
 def load_logged_in_manager():

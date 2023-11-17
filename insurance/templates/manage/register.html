@@ -1,17 +1,37 @@
-{% extends 'base_manager.html' %}
+<!doctype html>
+<link rel="stylesheet" href="{{ url_for('static', filename='manage.css') }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+<div class="main_block">
+    <div class="left_block"></div>
+<form method="POST">
+    <div class="right_block">
+        <div class="first"><span class="first_span">You are </span>rebirth</div>
 
-{% block header %}
-<h1>{% block title %}Register{% endblock %}</h1>
-{% endblock %}
+        <div class="second"><p>Welcome there, Please register your account</p></div>
 
-{% block content %}
-<form method="post">
-	<label for="name">Name</label>
-	<input name="name" id = "username" required>
-    <label for="email">Email</label>
-    <input name="email" id="email" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Register"> 
-</form>
-{% endblock %}
+        <div class="third">
+            <input name="email" type="email" autocomplete="off" required>
+            <p style="top:5px">Email Address</p>
+            <input style="top:62px" name="password" type="password" required>
+            <p style="top:65px">Password</p>
+            <input style="top:124px" name="name"  autocomplete="off" required>
+            <p style="top:125px">Username</p>
+        </div>
+
+        <div class="fourth" style="top:365px">
+            <input class="submit" type="submit" value="submit">
+            <div class="log"><a href={{ url_for('manage.login') }}>Login</a></div>
+        </div>
+
+        <div class="sixth">
+            <p style="color:rgb(128,128,128,0.7)">If you have registered before</p>
+            <a href={{ url_for('manage.login') }}><p>Just login</p></a>
+        </div>
+    </form>
+        
+    </div>
+
+</div>

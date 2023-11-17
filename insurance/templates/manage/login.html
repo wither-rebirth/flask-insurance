@@ -1,10 +1,10 @@
 <!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
 <link rel="stylesheet" href="{{ url_for('static', filename='manage.css') }}">
-
-<div class="video-box" style="display:none">
-    <video class="video-background" preload="auto" loop playsinline autoplay src="../static/image/starsky.mp4" tabindex="-1" muted="muted"></video>
- </div>
-
+<form method="POST">
 <div class="main_block">
     <div class="left-side">
        <div class="first"><span class="first_span">We are</span> wither</div>
@@ -13,9 +13,9 @@
         <p>to your account</p></div>
 
         <div class="third">
-            <input  name="email" type="email" autocomplete="off">
+            <input name="email" type="email" autocomplete="off" required>
             <p style="top:5px">Email Address</p>
-            <input style="top:62px" name="password" type="password">
+            <input style="top:62px" name="password" type="password" required>
             <p style="top:65px">Password</p>
         </div>
 
@@ -26,17 +26,14 @@
         </div>
 
         <div class="fifth">
-        <div class="login">
-            <p>Login</p>
-        </div>
-        <div class="sign">
-            <p>Sign up</p>
-        </div>
+            <input class="login" type="submit" value="Login">
+            <div class="sign">
+            <a href="{{ url_for('manage.register') }}"><p>Sign up</p></a>
+            </div>
         </div>
 
     </div>
+</form>
+    <div class="right-side"></div>
 
-    <div class="right-side">
-        <p>hello</p>
-    </div>
 </div>

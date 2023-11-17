@@ -81,6 +81,7 @@ html {
     position: absolute;
     left: -30px;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 .sign {
@@ -92,6 +93,11 @@ html {
     left: 100px;
     color: rgb(128,128,128);
     border-radius: 5px;
+}
+
+.sign a {
+    color: rgb(128,128,128);
+    text-decoration: none;
 }
 
 .first_span {
@@ -106,6 +112,16 @@ html {
     width: 600px;
     background-image: url(../static/image/leave.jpg);
     background-size: 100%;
+}
+
+.left_block {
+    width: 580px;
+    background-image: url(../static/image/lake.jpg);
+    background-size: 100%;
+}
+
+.right_block {
+    width: 520px;
 }
 
 .main_block {
@@ -165,4 +181,46 @@ html {
 .slogan a {
     text-decoration: none;
     color: rgb(128,128,128,0.7);
+}
+
+.sixth {
+    position: relative;
+    left: 60px;
+    top: 480px;
+}
+
+.sixth a {
+    text-decoration: none;
+    color: black;
+}
+
+.submit {
+    width: 110px;
+    height: 33px;
+    position: absolute;
+    left: 6px;
+    top: 20px;
+    background: black;
+    color: white;
+    border: unset;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.log {
+    border: solid;
+    padding-top: 4px;
+    width: 109px;
+    height: 26px;
+    position: absolute;
+    top: 20px;
+    left: 155px;
+    text-align: center;
+    color: rgb(128,128,128,0.5);
+    border-radius: 5px;
+}
+
+.log a {
+    color: rgb(128,128,128);
+    text-decoration: none;
 }
