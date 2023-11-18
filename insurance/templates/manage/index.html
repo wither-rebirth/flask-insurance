@@ -1,2 +1,68 @@
 <!doctype html>
+<head>
 <link rel="stylesheet" href="{{ url_for('static', filename='manage.css') }}">
+<link rel="icon" href="{{ url_for('static', filename='wither_rose.png') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+</head>
+
+<body>
+<nav class="top_column">
+    <button class="first_button ripple">
+        <img class="menu " src="../static/image/menu.png">
+    </button>
+    <div style="width:225px;position:relative">
+        <img class="search_img" src="../static/image/search.png">
+        <input class="search" name="search" type="text" placeholder="Search..." autocomplete="off">
+    </div>
+    <button class="second_button ripple">
+        <p>Mega Menu  <img style="width:10px" src="../static/image/down-arror.png"></p>
+    </button>
+<!--语言选择-->
+    <div>
+    <button class="third_button ripple">
+        <img style="width:25px" src="../static/image/chinese.png">
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-language"></a>
+        <a class="dropdown-language"></a>
+        <a class="dropdown-language"></a>
+    </div>
+    </div>
+
+    <div style="width:1000px"></div>
+    <button class="fourth_button ripple">
+        <img style="width:20px" src="../static/image/app.png">
+    </button>
+    <button class="fourth_button ripple">
+        <img style="width:20px" src="../static/image/open.png">
+    </button>
+    <button class="fourth_button ripple">
+        <img style="width:30px" src="../static/image/ring.png">
+    </button>
+    <button style="width:100px" class="fourth_button ripple"></button>
+    <button class="fourth_button ripple">
+        <img style="width:28px" src="../static/image/setting.png">
+    </button>
+</nav>
+
+<div class="left-row">
+    <ul class="left_bar">
+        <li class="active"><a style="color:white" href="#">report</a></li>
+        <li><a href="#">Export</a></li>
+        <li><a href="#">Insert</a></li>
+    </ul>
+
+    <ul class="left_bar">
+        <li><a href="#">Analysis</a></li>
+        <li><a href="#">Find out</a></li>
+        <li><a href="#">Cancle</a></li>
+    </ul>
+
+    <ul class="left_bar">
+        <li><a href="#">Account</a></li>
+        <li><a href="#">Password</a></li>
+        <li><a href="#">Email</a></li>
+    </ul>
+</div>
+</body>
