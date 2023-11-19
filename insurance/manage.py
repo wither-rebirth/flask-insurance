@@ -80,6 +80,10 @@ def register():
         flash(error)
     return render_template('manage/register.html')
 
+@bp.route('/forget', methods=("GET", "POST"))
+def forget():
+    return render_template('manage/forget.html')
+
 @bp.route('/index', methods=("GET", "POST"))
 def index():
     return render_template('manage/index.html')

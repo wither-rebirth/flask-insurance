@@ -8,7 +8,7 @@
 
 <body>
 <nav class="top_column">
-    <button class="first_button ripple">
+    <button onclick="set_menu()" class="first_button ripple">
         <img class="menu " src="../static/image/menu.png">
     </button>
     <div style="width:225px;position:relative">
@@ -18,35 +18,84 @@
     <button class="second_button ripple">
         <p>Mega Menu  <img style="width:10px" src="../static/image/down-arror.png"></p>
     </button>
+
 <!--语言选择-->
-    <div>
-    <button class="third_button ripple">
+    <button onclick="set_language()" class="third_button ripple">
         <img style="width:25px" src="../static/image/chinese.png">
     </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-language"></a>
-        <a class="dropdown-language"></a>
-        <a class="dropdown-language"></a>
-    </div>
+    <div id="language" class="dropdown-menu hidden">
+        <a href="#" class="dropdown-language"><img src="../static/image/English.png" style="width:24px; top:4px; padding-right:0px"> English</a>
+        <a href="#" class="dropdown-language"><img src="../static/image/Spanish.png">  Spanish</a>
+        <a href="#" class="dropdown-language"><img src="../static/image/Italian.png">  Italian</a>
+        <a href="#" class="dropdown-language"><img src="../static/image/German.png">  German</a>
     </div>
 
     <div style="width:1000px"></div>
-    <button class="fourth_button ripple">
+
+<!--应用选择-->
+    <div>
+    <button onclick="set_app()" class="fourth_button ripple">
         <img style="width:20px" src="../static/image/app.png">
     </button>
+    <div id="app" class="dropdown-menu-app hidden">
+        <div style="padding:0 8px;width:304px;height:188px">
+            <div class="first_row">
+                <div class="col"><a href="#" class="dropdown-icon-item"><img src="../static/image/Github.png"><span>Github</span></a></div>
+                <div class="col"><a href="#" class="dropdown-icon-item"><img src="../static/image/bitbucket.png"><span>Bitbucket</span></a></div>
+                <div class="col"><a href="#" class="dropdown-icon-item"><img src="../static/image/dribbble.png"><span>Dribbble</span></a></div>
+            </div>
+            <div class="second_row">
+                <div class="col"><a href="#" class="dropdown-icon-item"><img src="../static/image/dropbox.png"><span>Dropbox</span></a></div>
+                <div class="col"><a href="#" class="dropdown-icon-item"><img src="../static/image/chatgpt.png"><span>OpenAI</span></a></div>
+                <div class="col"><a href="#" class="dropdown-icon-item"><img src="../static/image/canva.png"><span>Canva</span></a></div>
+            </div>
+        </div>
+    </div>
+    </div>
+
     <button class="fourth_button ripple">
         <img style="width:20px" src="../static/image/open.png">
     </button>
-    <button class="fourth_button ripple">
+
+<!--消息中心-->
+    <div>
+    <button onclick="set_message()" class="fourth_button ripple">
         <img style="width:30px" src="../static/image/ring.png">
     </button>
-    <button style="width:100px" class="fourth_button ripple"></button>
+    <div id="message" class="dropdown-menu-message hidden">
+        <div class="first_line">
+            <div><h6 style="font-size:15px">Notifications</h6></div>
+            <div><a style="font-size: small;color: #04a2b3;" href="#">View All</a></div>
+        </div>
+        <div class="data-simplebar chatbar" style="max-height:230px"></div>
+        <div class="view">
+             <a class="view_all" href="#"><img style="width:15px;position: relative;top: 2px;right: 5px;" src="../static/image/right_arror.png"><span style="font-size: 14px;color: #04a2b3;">View More...</span></a>
+        </div>
+    </div>
+    </div>
+
+<!--个人中心-->
+    <div>
+    <button onclick="set_profile()" style="width:100px" class="fourth_button ripple">
+        <span style="padding-right:2px">Adam</span><img style="width:10px" src="../static/image/down-arror.png"> 
+    </button>
+    <div id="profile" class="dropdown-menu-account hidden">
+        <a class="dropdown-item" href="#"><img src="../static/image/profile.png"><span>Profile</span></a>
+        <a class="dropdown-item" href="#"><img src="../static/image/wallet.png"><span>My Wallet</span></a>
+        <a class="dropdown-item" href="#"><img style="width: 23px;top: 0px;right: 3px;padding-right: 3px;" src="../static/image/set.png"><span style="position:relative;bottom:6px">Settings</span></a>
+        <a class="dropdown-item" href="#"><img src="../static/image/unlock.png"><span>Lock Screen</span></a>
+        <div class="dropdown-driver"></div>
+        <a class="dropdown-item" href="#"><img src="../static/image/out.png"><span style="color:red">Logout</span></a>
+    </div>
+    </div>
+
     <button class="fourth_button ripple">
         <img style="width:28px" src="../static/image/setting.png">
     </button>
+
 </nav>
 
-<div class="left-row">
+<div id="menu" class="left-row">
     <ul class="left_bar">
         <li class="active"><a style="color:white" href="#">report</a></li>
         <li><a href="#">Export</a></li>
@@ -66,3 +115,65 @@
     </ul>
 </div>
 </body>
+
+<script>
+    function hasClass(element,className){
+        var aSameClassEle = document.getElementsByClassName(className);
+        for(var i = 0;i < aSameClassEle.length;i++){
+            if(aSameClassEle[i] === element){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function set_menu() {
+        let menu = document.getElementById("menu");
+        if (hasClass(menu, 'hidden')) {
+            return menu.classList.remove("hidden")
+        }
+        else {
+            return menu.classList.add("hidden")
+        }
+    }
+
+    function set_language(){
+        let language = document.getElementById("language");
+        if (hasClass(language,'hidden')) {
+            return language.classList.remove("hidden")
+        }
+        else {
+            return language.classList.add("hidden")
+        }
+    }
+
+    function set_app() {
+        let app = document.getElementById("app");
+        if (hasClass(app, 'hidden')) {
+            return app.classList.remove('hidden')
+        }
+        else {
+            return app.classList.add('hidden')
+        }
+    }
+
+    function set_profile() {
+        let profile = document.getElementById("profile");
+        if (hasClass(profile, 'hidden')) {
+            return profile.classList.remove('hidden')
+        }
+        else {
+            return profile.classList.add('hidden')
+        }
+    }
+
+    function set_message() {
+        let message = document.getElementById("message");
+        if (hasClass(message, 'hidden')) {
+            return message.classList.remove('hidden')
+        }
+        else {
+            return message.classList.add('hidden')
+        }
+    }
+</script>
