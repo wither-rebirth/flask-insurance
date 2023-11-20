@@ -15,9 +15,12 @@
         <img class="search_img" src="../static/image/search.png">
         <input class="search" name="search" type="text" placeholder="Search..." autocomplete="off">
     </div>
-    <button class="second_button ripple">
+
+<!--Mega Menu-->
+    <button onclick="set_mega_menu()" class="second_button ripple">
         <p>Mega Menu  <img style="width:10px" src="../static/image/down-arror.png"></p>
     </button>
+
 
 <!--语言选择-->
     <button onclick="set_language()" class="third_button ripple">
@@ -95,25 +98,61 @@
 
 </nav>
 
-<div id="menu" class="left-row">
-    <ul class="left_bar">
-        <li class="active"><a style="color:white" href="#">report</a></li>
-        <li><a href="#">Export</a></li>
-        <li><a href="#">Insert</a></li>
-    </ul>
-
-    <ul class="left_bar">
-        <li><a href="#">Analysis</a></li>
-        <li><a href="#">Find out</a></li>
-        <li><a href="#">Cancle</a></li>
-    </ul>
-
-    <ul class="left_bar">
-        <li><a href="#">Account</a></li>
-        <li><a href="#">Password</a></li>
-        <li><a href="#">Email</a></li>
+<div id="menu" class="left-row demo demo-1">
+    <ul class="left_row ">
+        <li class="menu-title">Menu</li>
+        <li><a class="website" href="#" style="color:white"><img style="width:25px;padding-left:0px;padding-right:5px;top:0px" src="../static/image/dashboard.png"><span style="top:0px">Dashboard</span></a></li>
+        <li><a class="website" href="#"><img style="width:15px" src="../static/image/calender.png"><span>Calendar</span></a></li>
+        <li><a class="website" href="#"><img style="width:17px" src="../static/image/chat.png"><span>Chat</span></a></li>
+        <li><a class="website" href="#"><img style="width:17px" src="../static/image/layout.png"><span>Layouts</span></a></li>
+        <li class="menu-title">PAGES</li>
+        <li><a class="website" href="#"><img style="width:20px;" src="../static/image/authentication.png"><span>Authentication<span></a></li>
+        <li><a class="website" href="#"><img style="width:20px;" src="../static/image/utility.png"><span>Utility</span></a></li>
+        <li class="menu-title">COMPONENTS</li>
+        <li><a class="website" href="#"><img style="width:16px" src="../static/image/UI.png"><span>UI Element</span></a></li>
+        <li><a class="website" href="#"><img style="width:16px" src="../static/image/forms.png"><span>Forms</span></a></li>
+        <li><a class="website" href="#"><img style="width:16px" src="../static/image/tables.png"><span>Tables</span></a></li>
+        <li><a class="website" href="#"><img style="width:16px" src="../static/image/chart.png"><span>Charts</span></a></li>
+        <li><a class="website" href="#"><img style="width:16px" src="../static/image/icons.png"><span>Icons</span></a></li>
+        <li><a class="website" href="#"><img style="width:16px" src="../static/image/maps.png"><span>Maps</span></a></li>
+        <li><a class="website" href="#"><img style="width:20px;top:0px" src="../static/image/muti.png"><span style="top:0px">Mult Level</span></a></li>
     </ul>
 </div>
+
+<div class="mega_menu hidden" id="mega_menu">
+    <div class="row">
+        <div class="col-md-4">
+            <h5 style="font-size:14px;margin-bottom:8px">UI Components</h5>
+            <ul class="list-unstyled">
+                <li><a href="#">Lightbox</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h5 style="font-size:14px;margin-bottom:8px">Applications</h5>
+            <ul class="list-unstyled">
+                <li><a href="#">Lightbox</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h5 style="font-size:14px;margin-bottom:8px">Extra Pages</h5>
+            <ul class="list-unstyled">
+                <li><a href="#">Lightbox</a></li>
+            </ul>
+        </div>
+        <div class="col-md-5">
+            <h5 style="font-size:14px;margin-bottom:8px">UI Design</h5>
+        </div>
+        <div class="col-md-6">
+            <img>
+        </div>
+    </div>
+</div>
+
+<div class="main_content">
+
+</div>
+
+{% block content %}{% endblock %}
 </body>
 
 <script>
@@ -174,6 +213,16 @@
         }
         else {
             return message.classList.add('hidden')
+        }
+    }
+
+    function set_mega_menu() {
+        let mega = document.getElementById("mega_menu");
+        if (hasClass(mega, 'hidden')) {
+            return mega.classList.remove('hidden')
+        }
+        else {
+            return mega.classList.add('hidden')
         }
     }
 </script>

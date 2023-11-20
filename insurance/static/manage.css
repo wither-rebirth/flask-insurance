@@ -307,10 +307,11 @@ a {
 
 
 .left-row {
-    width: 199.25px;
-    height: 667px;
-    background: #f5f5f5;
-    padding: 20px;
+    width: 240px;
+    height: 702.5px;
+    background: #2a323c;
+    padding-top: 10px;
+    padding-bottom: 30px;
     border-right: 1px solid #eee;
     position: fixed;
     top: 70px;
@@ -334,12 +335,11 @@ a {
     padding-left: 20px;
     padding-right: 20px;
     font-size: 14px;
-    color: #337ab7;
+    color: #74788d;
 }
 
 .left_bar :hover {
-  background-color: rgb(128,128,128, 0.1);
-  color: #333;
+  color: white;
 }
 
 .active {
@@ -441,6 +441,16 @@ a {
     right: 505px;
     width: 320px;
     height: 331.6px;
+}
+
+.dropdown-menu-mega {
+    background: #FFF;
+    position: absolute;
+    top: 70px;
+    border-radius: 6px;
+    padding: 20px;
+    width: 1360px;
+    height: 262px;
 }
 
 .dropdown-menu-account :hover{
@@ -579,4 +589,181 @@ a {
     width: 286px;
     height: 21px;
     padding: 4px 8px;
+}
+
+.left_row {
+    width: 240px;
+    height: 702.5px;
+}
+
+.left_row :hover {
+    color: white;
+    opacity: 1;
+}
+
+.left_row li {
+    display: block;
+    width: auto;
+}
+
+.menu-title {
+    padding: 12px 20px!important;
+    letter-spacing: .05em;
+    pointer-events: none;
+    cursor: default;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #74788d;
+    font-weight: 600;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    opacity: .5;
+}
+
+.website {
+    display: block;
+    height: 24.7px;
+    padding: 0.625rem 1.5rem;
+    color: #74788d;
+    position: relative;
+    font-size: 13.3px;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-weight: 500;
+}
+
+.website img {
+    display: inline-block;
+    padding-bottom: 0.125em;
+    font-size: 1.1rem;
+    line-height: 1.40625rem;
+    vertical-align: middle;
+    color: #505d69;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+    opacity: .75;
+    padding-right: 5px;
+    position: relative;
+    padding-left:4px;
+    padding-right:12px;
+    top:2px;
+}
+
+.website span {
+    position: relative;
+    top: 3px;
+}
+
+.demo{
+    height  : 613px;
+    overflow: auto;
+    border  : none;
+}
+
+/*滚动条整体样式*/
+.demo-1::-webkit-scrollbar {
+    width : 8px;  /*高宽分别对应横竖滚动条的尺寸*/
+    height: 1px;
+}
+/*滚动条里面小方块*/
+.demo-1::-webkit-scrollbar-thumb { 
+    border-radius: 10px;
+    box-shadow   : inset 0 0 3px rgba(0, 0, 0, 0.2);
+    background   : rgb(128,128,128,0.6)
+}
+/*滚动条里面轨道*/
+.demo-1::-webkit-scrollbar-track { 
+    box-shadow   : inset 0 0 3px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background   : #ededed;
+}
+
+.logo {
+    width: 192px;
+    height: 70px;
+    padding: 0 24px;
+    background: #2a323c;
+}
+
+.main_content {
+    margin-left: 240px;
+    margin-top: 71px;
+    overflow: hidden;
+}
+
+.mega_menu {
+    position: absolute;
+    width: 1360px;
+    height: 262px;
+    padding: 20px;
+    top: 70px;
+    left: 20px;
+    right: 20px;
+    background-color: white;
+    z-index: 1000;
+    box-shadow: 0 5px 12px rgba(0,0,0,.1);
+    animation-name: DropDownSlide;
+    animation-fill-mode: both;
+    font-size: .9rem;
+    color: #505d69;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0 solid rgba(0,0,0,.15);
+    border-radius: 0.25rem;
+}
+
+.row {
+    --bs-gutter-x: 24px;
+    --bs-gutter-y: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+
+.col-md-4 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 283.5px;
+    height: 262px;
+    padding: 0 12px;
+}
+
+.col-md-5 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 206.664px;
+    height: 262px;
+    padding: 0 12px;
+}
+
+.col-md-6 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 168.219px;
+    height: 262px;
+    padding: 0 12px;
+}
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+.list-unstyled li {
+    position: relative;
+    padding: 5px 0;
+}
+
+.list-unstyled li a {
+    color:#505d69;
 }
