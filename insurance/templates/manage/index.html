@@ -7,6 +7,27 @@
 </head>
 
 <body>
+    <div id="menu" class="left-row demo demo-1">
+        <ul class="left_row ">
+            <li class="menu-title">Menu</li>
+            <li><a class="website" href="#" style="color:white"><img style="width:25px;padding-left:0px;padding-right:5px;top:0px" src="../static/image/dashboard.png"><span style="top:0px">Dashboard</span></a></li>
+            <li><a class="website" href="#"><img style="width:15px" src="../static/image/calender.png"><span>Calendar</span></a></li>
+            <li><a class="website" href="#"><img style="width:17px" src="../static/image/chat.png"><span>Chat</span></a></li>
+            <li><a class="website" href="#"><img style="width:17px" src="../static/image/layout.png"><span>Layouts</span></a></li>
+            <li class="menu-title">PAGES</li>
+            <li><a class="website" href="#"><img style="width:20px;" src="../static/image/authentication.png"><span>Authentication<span></a></li>
+            <li><a class="website" href="#"><img style="width:20px;" src="../static/image/utility.png"><span>Utility</span></a></li>
+            <li class="menu-title">COMPONENTS</li>
+            <li><a class="website" href="#"><img style="width:16px" src="../static/image/UI.png"><span>UI Element</span></a></li>
+            <li><a class="website" href="#"><img style="width:16px" src="../static/image/forms.png"><span>Forms</span></a></li>
+            <li><a class="website" href="#"><img style="width:16px" src="../static/image/tables.png"><span>Tables</span></a></li>
+            <li><a class="website" href="#"><img style="width:16px" src="../static/image/chart.png"><span>Charts</span></a></li>
+            <li><a class="website" href="#"><img style="width:16px" src="../static/image/icons.png"><span>Icons</span></a></li>
+            <li><a class="website" href="#"><img style="width:16px" src="../static/image/maps.png"><span>Maps</span></a></li>
+            <li><a class="website" href="#"><img style="width:20px;top:0px" src="../static/image/muti.png"><span style="top:0px">Mult Level</span></a></li>
+        </ul>
+    </div>
+
 <nav class="top_column">
     <button onclick="set_menu()" class="first_button ripple">
         <img class="menu " src="../static/image/menu.png">
@@ -17,9 +38,65 @@
     </div>
 
 <!--Mega Menu-->
-    <button onclick="set_mega_menu()" class="second_button ripple">
+    <div>
+    <button style="top:23px" onclick="set_mega_menu()" class="second_button ripple">
         <p>Mega Menu  <img style="width:10px" src="../static/image/down-arror.png"></p>
     </button>
+    <div class="mega_menu hidden" id="mega_menu">
+        <div class="row">
+            <div class="col-md-4">
+                <h5 style="font-size:14px;margin-bottom:8px">UI Components</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Lightbox</a></li>
+                    <li><a href="#">Range Slider</a></li>
+                    <li><a href="#">Sweet Alert</a></li>
+                    <li><a href="#">Rating</a></li>
+                    <li><a href="#">Forms</a></li>
+                    <li><a href="#">Tables</a></li>
+                    <li><a href="#">Charts</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5 style="font-size:14px;margin-bottom:8px">Applications</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Ecommerce</a></li>
+                    <li><a href="#">Calendar</a></li>
+                    <li><a href="#">Email</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Tasks</a></li>
+                    <li><a href="#">Contacts</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5 style="font-size:14px;margin-bottom:8px">Extra Pages</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Light Sidebar</a></li>
+                    <li><a href="#">Compact Sidebar</a></li>
+                    <li><a href="#">Horizontal layout</a></li>
+                    <li><a href="#">Maintenance</a></li>
+                    <li><a href="#">Coming Soon</a></li>
+                    <li><a href="#">Timeline</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="col-md-5">
+                <h5 style="font-size:14px;margin-bottom:8px">UI Design</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Lightbox</a></li>
+                    <li><a href="#">Range Slider</a></li>
+                    <li><a href="#">Sweet Alert</a></li>
+                    <li><a href="#">Rating</a></li>
+                    <li><a href="#">Forms</a></li>
+                    <li><a href="#">Tables</a></li>
+                    <li><a href="#">Charts</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <img style="width:200px" src="../static/image/work.png">
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <!--语言选择-->
@@ -98,82 +175,6 @@
 
 </nav>
 
-<div id="menu" class="left-row demo demo-1">
-    <ul class="left_row ">
-        <li class="menu-title">Menu</li>
-        <li><a class="website" href="#" style="color:white"><img style="width:25px;padding-left:0px;padding-right:5px;top:0px" src="../static/image/dashboard.png"><span style="top:0px">Dashboard</span></a></li>
-        <li><a class="website" href="#"><img style="width:15px" src="../static/image/calender.png"><span>Calendar</span></a></li>
-        <li><a class="website" href="#"><img style="width:17px" src="../static/image/chat.png"><span>Chat</span></a></li>
-        <li><a class="website" href="#"><img style="width:17px" src="../static/image/layout.png"><span>Layouts</span></a></li>
-        <li class="menu-title">PAGES</li>
-        <li><a class="website" href="#"><img style="width:20px;" src="../static/image/authentication.png"><span>Authentication<span></a></li>
-        <li><a class="website" href="#"><img style="width:20px;" src="../static/image/utility.png"><span>Utility</span></a></li>
-        <li class="menu-title">COMPONENTS</li>
-        <li><a class="website" href="#"><img style="width:16px" src="../static/image/UI.png"><span>UI Element</span></a></li>
-        <li><a class="website" href="#"><img style="width:16px" src="../static/image/forms.png"><span>Forms</span></a></li>
-        <li><a class="website" href="#"><img style="width:16px" src="../static/image/tables.png"><span>Tables</span></a></li>
-        <li><a class="website" href="#"><img style="width:16px" src="../static/image/chart.png"><span>Charts</span></a></li>
-        <li><a class="website" href="#"><img style="width:16px" src="../static/image/icons.png"><span>Icons</span></a></li>
-        <li><a class="website" href="#"><img style="width:16px" src="../static/image/maps.png"><span>Maps</span></a></li>
-        <li><a class="website" href="#"><img style="width:20px;top:0px" src="../static/image/muti.png"><span style="top:0px">Mult Level</span></a></li>
-    </ul>
-</div>
-
-<div class="mega_menu hidden" id="mega_menu">
-    <div class="row">
-        <div class="col-md-4">
-            <h5 style="font-size:14px;margin-bottom:8px">UI Components</h5>
-            <ul class="list-unstyled">
-                <li><a href="#">Lightbox</a></li>
-                <li><a href="#">Range Slider</a></li>
-                <li><a href="#">Sweet Alert</a></li>
-                <li><a href="#">Rating</a></li>
-                <li><a href="#">Forms</a></li>
-                <li><a href="#">Tables</a></li>
-                <li><a href="#">Charts</a></li>
-            </ul>
-        </div>
-        <div class="col-md-4">
-            <h5 style="font-size:14px;margin-bottom:8px">Applications</h5>
-            <ul class="list-unstyled">
-                <li><a href="#">Ecommerce</a></li>
-                <li><a href="#">Calendar</a></li>
-                <li><a href="#">Email</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Tasks</a></li>
-                <li><a href="#">Contacts</a></li>
-            </ul>
-        </div>
-        <div class="col-md-4">
-            <h5 style="font-size:14px;margin-bottom:8px">Extra Pages</h5>
-            <ul class="list-unstyled">
-                <li><a href="#">Light Sidebar</a></li>
-                <li><a href="#">Compact Sidebar</a></li>
-                <li><a href="#">Horizontal layout</a></li>
-                <li><a href="#">Maintenance</a></li>
-                <li><a href="#">Coming Soon</a></li>
-                <li><a href="#">Timeline</a></li>
-                <li><a href="#">FAQs</a></li>
-            </ul>
-        </div>
-        <div class="col-md-5">
-            <h5 style="font-size:14px;margin-bottom:8px">UI Design</h5>
-            <ul class="list-unstyled">
-                <li><a href="#">Lightbox</a></li>
-                <li><a href="#">Range Slider</a></li>
-                <li><a href="#">Sweet Alert</a></li>
-                <li><a href="#">Rating</a></li>
-                <li><a href="#">Forms</a></li>
-                <li><a href="#">Tables</a></li>
-                <li><a href="#">Charts</a></li>
-            </ul>
-        </div>
-        <div class="col-md-6">
-            <img style="width:200px" src="../static/image/work.png">
-        </div>
-    </div>
-</div>
-
 <div class="main_content">
     <div class="content_title">
         <h4>Dashboard</h4>
@@ -219,19 +220,113 @@
     </div>
 
     <div class="text-end">
+<!--Left chart-->
         <div class="end-left">
             <div class="end-left-1">
                 <div class="end-left-2">
                     <h4 class="endtitle">Recent Contacts</h4>
-                    <div class="end-left-3">
+                    <div class="end-table">
+                        <div class="end-left-3">
+                            <div class="table-response">
+                                <table class="table">
+                                    <thead>
+                                        <tr style="height:38.59px">
+                                            <th><b>Name</b></th>
+                                            <th><b>Position</b></th>
+                                            <th><b>Office</b></th>
+                                            <th><b>Age</b></th>
+                                            <th><b>Start date</b></th>
+                                            <th><b>Salary</b></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/05</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Garrett Winters</td>
+                                            <td>Accountant</td>
+                                            <td>Tokyo</td>
+                                            <td>63</td>
+                                            <td>2011/07/25</td>
+                                            <td>$170,750</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ashton Cox</td>
+                                            <td>Junior Technical Author</td>
+                                            <td>San Francisco</td>
+                                            <td>66</td>
+                                            <td>2009/01/12</td>
+                                            <td>$86,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cedric Kelly</td>
+                                            <td>Senior Javascript</td>
+                                            <td>Edinburgh</td>
+                                            <td>22</td>
+                                            <td>2012/03/29</td>
+                                            <td>$433,060</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Airi Satou</td>
+                                            <td>Accountant</td>
+                                            <td>Tokyo</td>
+                                            <td>33</td>
+                                            <td>2008/11/28</td>
+                                            <td>$162,700</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Brielle Williamson</td>
+                                            <td>Integration Specialist</td>
+                                            <td>New York</td>
+                                            <td>61</td>
+                                            <td>2012/12/02</td>
+                                            <td>$372,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Herrod Chandler</td>
+                                            <td>Sales Assistant</td>
+                                            <td>San Francisco</td>
+                                            <td>59</td>
+                                            <td>2012/08/06</td>
+                                            <td>$137,500</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+<!--right chart-->
         <div class="end-right">
             <div class="end-right-1">
                 <div class="end-right-2">
                     <h4 class="endtitle">Goal Completion</h4>
+                    <p>Add Product to cart<span>80%</span></p>
+                    <div class="progress">
+                        <div style="width:80%" class="progress-bar"></div></div>
+                    <p>Complete Purchases<span>50%</span></p>
+                    <div class="progress">
+                        <div style="width:50%" class="progress-bar"></div></div>
+                    <p>Visit Premium plan<span>70%</span></p>
+                    <div class="progress">
+                        <div style="width:70%" class="progress-bar"></div></div>
+                    <p>Send Inquires<span>65%</span></p>
+                    <div class="progress">
+                        <div style="width:65%" class="progress-bar"></div></div>
+                    <p>Monthly Purchases<span>25%</span></p>
+                    <div class="progress">
+                        <div style="width:25%" class="progress-bar"></div></div>
+                    <p>Daily Visits<span>40%</span></p>
+                    <div class="progress">
+                        <div style="width:40%" class="progress-bar"></div></div>
                 </div>
             </div>
         </div>
@@ -240,7 +335,7 @@
 
 <footer class="footer">
     <div class="container-foot">
-        <div style="font-size:14px">2023© Appzia.</div>
+        <div style="font-size:14px">2023© Wither.</div>
         <div style="font-size:14px">Crafted with <img class="heart" src="../static/image/heart.png">By <span>CSS</span></div>
     </div>
 </footer>

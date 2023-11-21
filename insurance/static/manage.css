@@ -913,6 +913,72 @@ a {
     height: 439.32px;
 }
 
+.end-right-2 p {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.end-right-2 span {
+    --bs-text-opacity: 1;
+    font-weight: bolder;
+    color: #04a2b3;
+    float: right;
+}
+
+.progress {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 0.625rem;
+    overflow: hidden;
+    font-size: .675rem;
+    background-color: #f1f5f7;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.progress-bar {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        overflow: hidden;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        background-color: #04a2b3;
+        -webkit-transition: width .6s ease;
+        transition: width .6s ease;
+}
+
+.end-table {
+    --bs-gutter-x: 24px;
+    --bs-gutter-y: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+    width: 660px;
+    height: 412.13px;
+}
+
+.table-response {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 636px;
+    height: 396.13px;
+}
+
 .table {
     --bs-table-bg: transparent;
     --bs-table-accent-bg: transparent;
@@ -927,6 +993,9 @@ a {
     color: #505d69;
     vertical-align: top;
     border-color: #dadee3;
+    caption-side: bottom;
+    border-collapse: collapse;
+    height: 396.13px;
 }
 
 .table>thead>tr>th {
@@ -937,8 +1006,15 @@ a {
     border-bottom: 2px solid #dadee3;
 }
 
-.table th {
+.table th b {
+    float: left;
+    font-size: 15px;
     color: #212529;
+}
+
+.table td {
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .table>:not(caption)>*>* {
