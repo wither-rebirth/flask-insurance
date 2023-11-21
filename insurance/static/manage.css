@@ -766,4 +766,218 @@ a {
 
 .list-unstyled li a {
     color:#505d69;
+    font-family: Georgia, serif;
+}
+
+.content_title {
+    width: 1200px;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content_right_title {
+    position: relative;
+}
+
+.content_right_title ul {
+    list-style-type: none;
+    display: flex;
+    position: absolute;
+    right: 15px;
+    top: 1px;
+}
+
+.content_right_title ul li a {
+    position: relative;
+    color: #505d69;
+    right:5px;
+    font-size: 14px;
+}
+
+.content_right_title ul li span {
+    font-size: 14px;
+    color: #74788d;
+    margin-top: 2px;
+}
+
+.content_title h4 {
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 15px;
+    padding-top: 2px;
+}
+
+.text-center {
+    height: 171.34px;
+    display: flex;
+}
+
+.text-card {
+    height: 147.334px;
+    width: 276px;
+    padding: 0 12px;
+}
+
+.text-card-center {
+    border-radius: 6px;
+    margin-bottom: 24px;
+    height: 147.334px;
+    background: white;
+    width: 276px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.08);
+    color: #74788d;
+    text-align: center;
+}
+
+.main-text {
+    padding: 20px;
+    height: 107.334px;
+    width: 236px;
+}
+
+.main-text h4 {
+    margin-bottom:7px;
+}
+
+.main-text h2 {
+    color:black;
+    font-size: 29px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+.main-text h2 img {
+    width: 34.8px;
+    height: 30px;
+}
+
+.main-text p {
+    font-size:14px;
+    margin-top:16px;
+}
+
+.text-end {
+    height: 503.32px;
+    display: flex;
+}
+
+.end-left {
+    padding:0 12px;
+    width: 676px;
+}
+
+.end-left-1 {
+    margin-bottom: 24px;
+    width: 676px;
+    height: 479.32px;
+    background-color: white;
+    border-radius: 6px;
+}
+
+.end-left-2 {
+    padding: 20px;
+    height: 636px;
+    height: 439.32px;
+}
+
+.endtitle {
+    width: 636px;
+    height: 19.195px;
+    margin-bottom: 24px;
+}
+
+.end-left-3 {
+    width: 636px;
+    height: 396.125px;
+    padding: 0 12px;
+}
+
+.end-right {
+    padding:0 12px;
+    width: 476px;
+}
+
+.end-right-1 {
+    margin-bottom: 24px;
+    width: 476px;
+    height: 479.32px;
+    background-color: white;
+    border-radius: 6px;
+}
+
+.end-right-2 {
+    padding: 20px;
+    height: 436px;
+    height: 439.32px;
+}
+
+.table {
+    --bs-table-bg: transparent;
+    --bs-table-accent-bg: transparent;
+    --bs-table-striped-color: #505d69;
+    --bs-table-striped-bg: #f8f9fa;
+    --bs-table-active-color: #505d69;
+    --bs-table-active-bg: #f8f9fa;
+    --bs-table-hover-color: #505d69;
+    --bs-table-hover-bg: #f8f9fa;
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #505d69;
+    vertical-align: top;
+    border-color: #dadee3;
+}
+
+.table>thead>tr>th {
+    border-bottom: 2px solid #dadee3;
+}
+
+.table>thead>tr>th {
+    border-bottom: 2px solid #dadee3;
+}
+
+.table th {
+    color: #212529;
+}
+
+.table>:not(caption)>*>* {
+    padding: 0.5rem 0.5rem;
+    background-color: var(--bs-table-bg);
+    border-bottom-width: 1px;
+    -webkit-box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+}
+
+tbody, td, tfoot, th, thead, tr {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+}
+
+.footer {
+    padding: 20px calc(24px / 2);
+    color: #74788d;
+    position: absolute;
+    left: 240px;
+    width: 1200px;
+    height: 20px;
+    -webkit-box-shadow: 0 2px 4px rgba(0,0,0,.08);
+    box-shadow: 0 2px 4px rgba(0,0,0,.08);
+    background-color: #fff;
+}
+
+.container-foot {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px;
+    width: 1152px;
+    height: 21.594px;
+}
+
+.heart {
+    width: 14px;
+    position: relative;
+    top: 2px;
+    right: 2px;
 }
