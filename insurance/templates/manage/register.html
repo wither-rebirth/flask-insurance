@@ -32,8 +32,10 @@
             <p style="color:rgb(128,128,128,0.7)">If you have registered before</p>
             <a href={{ url_for('manage.login') }}><p>Just login</p></a>
         </div>
-    </form>
-        
+    </form> 
     </div>
+{% for message in get_flashed_messages() %}
+    <div class="flash-right">{{ message }}</div>
+{% endfor %}
 
 </div>

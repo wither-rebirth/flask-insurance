@@ -1,0 +1,38 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+<link rel="stylesheet" href="{{ url_for('static', filename='manage.css') }}">
+<link rel="icon" href="{{ url_for('static', filename='wither_rose.png') }}">
+
+<div class="main_block">
+    <div class="left_block_forget"></div>
+<form method="POST">
+    <div class="right_block">
+        <div class="first"><span class="first_span">You are </span>amnesia</div>
+
+        <div class="second"><p>Welcome there, Please enter your information</p></div>
+
+        <div class="third">
+            <input name="email" type="email" autocomplete="off" required>
+            <p style="top:5px">Email Address</p>
+            <input style="top:62px" name="name"  autocomplete="off" required>
+            <p style="top:66px">Username</p>
+        </div>
+
+        <div class="fifth">
+            <input class="submit" type="submit" value="submit">
+            <div class="log"><a href={{ url_for('manage.login') }}>Login</a></div>
+        </div>
+
+        <div class="sixth">
+            <p style="color:rgb(128,128,128,0.7)">If you have remember</p>
+            <a href={{ url_for('manage.login') }}><p>Come here</p></a>
+        </div>
+    </div>
+    
+</form>
+{% for message in get_flashed_messages() %}
+    <div class="flash-right">{{ message }}</div>
+{% endfor %}

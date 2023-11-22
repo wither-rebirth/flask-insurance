@@ -17,6 +17,30 @@ a {
     display: none;
 }
 
+.flash-left {
+    position: absolute;
+    top: 175px;
+    left: 50px;
+    padding: 0 5px;
+    font-size: 14px;
+    color: black;
+    background: #cae6f6;
+    border: 1px solid #377ba8;
+    border-radius: 5px;
+}
+
+.flash-right {
+    position: absolute;
+    top: 160px;
+    right: 140px;
+    padding: 0 5px;
+    font-size: 14px;
+    color: black;
+    background: #cae6f6;
+    border: 1px solid #377ba8;
+    border-radius: 5px;
+}
+
 .first {
     font-size: 25px;
     position: relative;
@@ -129,9 +153,21 @@ a {
     background-size: 100%;
 }
 
+.right-side_change {
+    width: 600px;
+    background-image: url(../static/image/winter.jpg);
+    background-size: 100%;
+}
+
 .left_block {
     width: 580px;
     background-image: url(../static/image/lake.jpg);
+    background-size: 100%;
+}
+
+.left_block_forget {
+    width: 580px;
+    background-image: url(../static/image/beach.jpg);
     background-size: 100%;
 }
 

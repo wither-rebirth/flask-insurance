@@ -17,8 +17,14 @@ ALLOWED_EXTENSIONS = set(['txt', 'png', 'jpg', 'xls', 'JPG', 'PNG', 'xlsx', 'gif
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-#index
+#overall 进行选择去管理端还是客户端
 @bp.route('/')
+def overall():
+    
+    return render_template('service/overall.html')
+
+#index
+@bp.route('/index')
 def index():
     #首页记得还需要给管理段一个接口，提供其更改广告标题
     return render_template('service/index.html')

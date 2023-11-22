@@ -16,7 +16,6 @@ bp = Blueprint('manage', __name__, url_prefix='/manage')
 def view():
     return render_template('manage/view.html')
 
-
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
@@ -40,7 +39,7 @@ def login():
             session['loggedin'] = True
             session['manager_name'] = manager['manager_name']
             session['email'] = manager['manager_email']
-            return redirect(url_for('index'))
+            return redirect(url_for("manage.index"))
         
         flash(error)
     return render_template('manage/login.html')
@@ -75,14 +74,61 @@ def register():
             db.commit()
             message = "You have successfully registered !"
             
-            #return redirect(url_for('manage.login'))
+            return redirect(url_for('manage.login'))
         
         flash(error)
     return render_template('manage/register.html')
 
 @bp.route('/forget', methods=("GET", "POST"))
 def forget():
+    if request.method == "POST":
+        email = request.form['email']
+        name = request.form['name']
+        error = None
+        db = get_db()
+        manager = db.execute(
+            'SELECT * FROM manager WHERE manager_email = ?', (email,)
+        ).fetchone()
+        if manager is None:
+            error = 'Your account is invalid ! Please enter right email'
+        elif email is None:
+            error = 'Incorrect email.'
+        else:
+            return redirect(url_for('manage.change'))
+        
+        flash(error)
     return render_template('manage/forget.html')
+
+@bp.route('/change', methods=("GET", "POST"))
+def change():
+    if request.method == "POST":
+        email = request.form['email']
+        password = request.form['password']
+        re_password = request.form['re_password']
+        error = None
+        db = get_db()
+        pass_password = db.execute(
+            'SELECT *'
+            ' FROM manager'
+            ' WHERE password = ? and manager_email = ?',
+            (generate_password_hash(password), email)
+        ).fetchone()
+        if password != re_password:
+            error = "You need to enter same password from two times"
+        elif pass_password :
+            error = "This password has existed. Please try other password!"
+        else:
+            db.execute(
+                'UPDATE manager'
+                ' SET password = ?'
+                ' WHERE manager_email = ?',
+                (generate_password_hash(password), email) 
+            )
+            db.commit()
+            return redirect(url_for("manage.login"))
+        
+        flash(error)
+    return render_template('manage/change.html')
 
 @bp.route('/index', methods=("GET", "POST"))
 def index():

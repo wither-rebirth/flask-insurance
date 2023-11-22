@@ -38,4 +38,8 @@
 </form>
     <div class="right-side"></div>
 
+{% for message in get_flashed_messages() %}
+    <div class="flash-left">{{ message }}</div>
+{% endfor %}
+
 </div>
