@@ -3,8 +3,8 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 from werkzeug.security import check_password_hash, generate_password_hash
-from insurance.auth import login_required
 from insurance.db import get_db
+import functools
 import time
 import os
 import re
@@ -12,9 +12,14 @@ import random
 
 bp = Blueprint('manage', __name__, url_prefix='/manage')
 
-@bp.route('/', methods=('GET', 'POST'))
-def view():
-    return render_template('manage/view.html')
+def login_required(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if g.manager is None:
+            return redirect(url_for('manage.login'))
+        
+        return view(**kwargs)
+    return wrapped_view
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
@@ -131,9 +136,39 @@ def change():
     return render_template('manage/change.html')
 
 @bp.route('/index', methods=("GET", "POST"))
+@login_required
 def index():
+    
     return render_template('manage/index.html')
 
+@bp.route('/calendar', methods=("GET", "POST"))
+@login_required
+def calendar():
+    
+    return render_template('manage/calendar.html')
+
+@bp.route('/chat', methods=("GET", "POST"))
+@login_required
+def chat():
+    return render_template('manage/chat.html')
+
+@bp.route('/ads', methods=("GET", "POST"))
+@login_required
+def ads():
+    
+    return render_template('manage/ads_change.html')
+
+@bp.route('/account', methods=("GET", "POST"))
+@login_required
+def account():
+    
+    return render_template('manage/account.html')
+
+@bp.route('service',methods=("GET", "POST"))
+@login_required
+def service():
+    return render_template("manage/service.html")
+          
 @bp.before_app_request
 def load_logged_in_manager():
     manager_id = session.get('manager_id')
@@ -152,4 +187,3 @@ def logout():
     session.pop('manager_name', None)
     session.pop('email', None)
     return redirect(url_for('index'))
-    
