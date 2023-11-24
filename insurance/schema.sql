@@ -3,20 +3,13 @@ DROP TABLE IF EXISTS person;
 
 CREATE TABLE user (
     id INTEGER PRIMARY KEY ,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     username TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL
-);
-
-CREATE TABLE manager (
-    manager_id INTEGER PRIMARY KEY,
-    manager_email TEXT NOT NULL,
-    manager_name TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL
 );
 
 -- 这里的user_id 映射的是user 表的id
 -- 意味着user_id 为1时,对应的是user表id为1的用户填写的个人信息,当存在多个user_id=1的时候,意味着ID为1的人填写了多个个人信息,即多个服务
-
 
 CREATE TABLE person (
     id INTEGER PRIMARY KEY,
@@ -54,4 +47,12 @@ CREATE TABLE service (
     image_path_part TEXT,
     image_path_accident TEXT,
     FOREIGN KEY (service_id) REFERENCES person (id)
-)
+);
+
+CREATE TABLE manager (
+    manager_id INTEGER PRIMARY KEY,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    manager_email TEXT NOT NULL,
+    manager_name TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
+);
