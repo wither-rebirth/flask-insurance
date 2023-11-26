@@ -228,7 +228,7 @@ def query_delete(service_id):
     part_path = "insurance" + path_part[2:]
     accident_path = "insurance" + path_accident[2:]
     os.remove(whole_path)
-    os.remove(path_part)
+    os.remove(part_path)
     os.remove(accident_path)
     
     db.execute(

@@ -1280,5 +1280,19 @@ tbody, td, tfoot, th, thead, tr {
 }
 
 .bottom_part {
-    height: 260px;
+    height: 300px;
+}
+
+.bottom_part input {
+    width: 150px;
+    height: 30px;
+    margin: 45px 60px;
+}
+
+.textarea {
+    padding-left: 10px;
+    width: 500px;
+    height: 150px;
+    margin-left: 20px;
+    margin-top: 30px;
 }

@@ -137,8 +137,12 @@ def change():
 @bp.route('/index', methods=("GET", "POST"))
 @login_required
 def index():
-    
     return render_template('manage/index.html')
+
+@bp.route('/setting', methods=("GET", "POST"))
+@login_required
+def setting():
+    return render_template('manage/setting.html')
 
 @bp.route('/calendar', methods=("GET", "POST"))
 @login_required
@@ -180,7 +184,7 @@ def service():
     return render_template("manage/service.html", services = services)
 
 #detail service
-@bp.route('/<insurance_id>')
+@bp.route('/<insurance_id>', methods=("GET", "POST"))
 @login_required
 def service_detail(insurance_id):
     db = get_db()
@@ -191,6 +195,17 @@ def service_detail(insurance_id):
         ' WHERE insurance_id = ?',
         (insurance_id,)
     ).fetchone()
+    if request.method == "POST":
+        case_status = request.form['status']
+        case_progress = request.form['progress']
+        db.execute(
+            'UPDATE service'
+            ' SET case_status = ?, case_progress = ?'
+            ' WHERE service_insurance = ?',
+            (case_status, case_progress, insurance_id)
+        )
+        db.commit()
+        return redirect(url_for('manage.service'))
     return render_template("manage/service_detail.html", detail = detail)
 
 #delete service
@@ -206,15 +221,19 @@ def service_delete(insurance_id):
         (insurance_id,)
     ).fetchone()
     
-    path_whole = path['image_path_whole']
-    path_part = path['image_path_part']
-    path_accident = path['image_path_accident']
-    whole_path ="insurance"+path_whole[2:]
-    part_path = "insurance" + path_part[2:]
-    accident_path = "insurance" + path_accident[2:]
-    os.remove(whole_path)
-    os.remove(part_path)
-    os.remove(accident_path)
+    if path:
+        path_whole = path['image_path_whole']
+        path_part = path['image_path_part']
+        path_accident = path['image_path_accident']
+        whole_path ="insurance"+path_whole[2:]
+        part_path = "insurance" + path_part[2:]
+        accident_path = "insurance" + path_accident[2:]
+        os.remove(whole_path)
+        os.remove(part_path)
+        os.remove(accident_path)
+        
+    else:
+        pass
     
     db.execute(
         'DELETE FROM person'

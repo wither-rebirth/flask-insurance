@@ -1,7 +1,7 @@
 {% extends "base_manage.html" %}
 
 {% block content %}
-
+<form method="post">
 <div class="main_content">
     <div class="block_1">
         <div class="block_2">
@@ -47,12 +47,18 @@
                             <img src={{ detail['image_path_part'] }}>
                             <img src={{ detail['image_path_accident'] }}>
                         </div>
-                        <div class="bottom_part"></div>
+                        <div class="bottom_part">
+                            <h4>Case Progress</h4>
+                            <textarea class="textarea" name="progress" placeholder="Please describe the progress of insurance!" required></textarea>
+                            <input style="color:blue" name="status" type="submit" value="已受理">
+                            <input style="color:red" name="status" type="submit" value="已驳回">
+                        </div>
+                   
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+</form>
 {% endblock %}
