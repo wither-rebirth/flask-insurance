@@ -129,16 +129,16 @@ def upload_image():
             unix_time = int(time.time())
             filename_whole = str(unix_time) + '.' + ext  # 修改文件名
             f.save(os.path.join(file_dir, filename_whole))  # 保存文件到upload目录
-            print(filename_whole)
         
         f_1 = request.files['myfile_1']
+        print(f_1)
         if f_1 and allowed_file(f_1.filename):
             fname = f_1.filename
             ext = fname.rsplit('.', 1)[1]
             unix_time = int(time.time()+1)
             filename_part = str(unix_time) + '.' + ext
-            f.save(os.path.join(file_dir, filename_part))
-            print(filename_part)
+            f_1.save(os.path.join(file_dir, filename_part))
+            
         
         f_2 = request.files['myfile_2']
         if f_2 and allowed_file(f_2.filename):
@@ -146,20 +146,22 @@ def upload_image():
             ext = fname.rsplit('.', 1)[1]
             unix_time = int(time.time()+2)
             filename_accident = str(unix_time) + '.' + ext
-            f.save(os.path.join(file_dir, filename_accident))
-            print(filename_accident)
+            f_2.save(os.path.join(file_dir, filename_accident))
+            
     
-            path_whole = "insurance/static/upload/" + filename_whole
-            path_part = "insurance/static/upload/" + filename_part
-            path_accident = "insurance/static/upload/" + filename_accident
+            path_whole = "../static/upload/" + filename_whole
+            path_part = "../static/upload/" + filename_part
+            path_accident = "../static/upload/" + filename_accident
+            case_status = "待处理"
+            case_progress = "请按照要求, 补充上传对应的理赔材料"
             
         db = get_db()
         #这里也一样，将insurance_id 传到下面来就可以了
         db.execute(
             'UPDATE service'
-            ' SET image_path_whole = ?, image_path_part = ?, image_path_accident = ?'
+            ' SET image_path_whole = ?, image_path_part = ?, image_path_accident = ?, case_status = ?, case_progress = ?'
             ' WHERE service_insurance = ?',
-            (path_whole, path_part, path_accident, insurance_id)
+            (path_whole, path_part, path_accident, case_status, case_progress, insurance_id)
         )
         db.commit()
         #清除session
@@ -218,12 +220,16 @@ def query_delete(service_id):
         ' WHERE service_id = ?',
         (service_id,)
     ).fetchone()
+    
     path_whole = path['image_path_whole']
     path_part = path['image_path_part']
     path_accident = path['image_path_accident']
-    os.remove(path_whole)
+    whole_path ="insurance"+path_whole[2:]
+    part_path = "insurance" + path_part[2:]
+    accident_path = "insurance" + path_accident[2:]
+    os.remove(whole_path)
     os.remove(path_part)
-    os.remove(path_accident)
+    os.remove(accident_path)
     
     db.execute(
         'DELETE FROM person'

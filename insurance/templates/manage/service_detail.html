@@ -1,0 +1,58 @@
+{% extends "base_manage.html" %}
+
+{% block content %}
+
+<div class="main_content">
+    <div class="block_1">
+        <div class="block_2">
+            <div class="block_3">
+                <div style="display:flex" class="block_4">
+                    <div class="left_part">
+                        <ul>
+                            <li>Crime_id :</li>
+                            <li>insurance_id :</li>
+                            <li>Name :</li>
+                            <li>Gender :</li>
+                            <li>Phone Number :</li>
+                            <li>Email :</li>
+                            <li>Birth date :</li>
+                            <li>IDcard Number :</li>
+                            <li>Company Name :</li>
+                            <li>Accident Time :</li>
+                            <li>Accident Reason :</li>
+                            <li>Hospital :</li>
+                            <li>Treatment :</li>
+                            <li>Description :</li>
+                        </ul>
+                        <ul style="padding-right:180px">
+                            <li>{{ detail['crime_id'] }}</li>
+                            <li>{{ detail['insurance_id'] }}</li>
+                            <li>{{ detail['person_name'] }}</li>
+                            <li>{{ detail['person_gender'] }}</li>
+                            <li>{{ detail['person_phone'] }}</li>
+                            <li>{{ detail['person_email'] }}</li>
+                            <li>{{ detail['person_birth'] }}</li>
+                            <li>{{ detail['person_idcard'] }}</li>
+                            <li>{{ detail['company_name'] }}</li>
+                            <li>{{ detail['service_date'] }}</li>
+                            <li>{{ detail['service_reason'] }}</li>
+                            <li>{{ detail['service_hospital'] }}</li>
+                            <li>{{ detail['treatment'] }}</li>
+                            <li>{{ detail['service_description'] }}</li>
+                        </ul>
+                    </div>
+                    <div class="right_part">
+                        <div class="top_part">
+                            <img src={{ detail['image_path_whole'] }}>
+                            <img src={{ detail['image_path_part'] }}>
+                            <img src={{ detail['image_path_accident'] }}>
+                        </div>
+                        <div class="bottom_part"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -22,22 +22,44 @@
                                 <table class="table dataTable">
                                     <thead>
                                         <tr style="text-align:left;font-size:15px" role="row">
-                                            <th style="width :120px">Name</th>
-                                            <th style="width :110px">Gender</th>
-                                            <th style="width :125px">Birth</th>
-                                            <th style="width :130px">ID number</th>
-                                            <th style="width :130px">Crime id</th>
-                                            <th style="width :130px">Insurance id</th>
-                                            <th style="width:140px">Email</th>
-                                            <th>Phone Number</th>
+                                            <th style="width :85px">Name</th>
+                                            <th style="width :85px">Gender</th>
+                                            <th style="width :115px">Birth</th>
+                                            <th style="width:145px">phone</th>
+                                            <th style="width :185px">ID number</th>
+                                            <th style="width :185px">Crime id</th>
+                                            <th>Insurance id</th>
+                                            
                                         </tr>
                                     </thead>
                                 </table>
                             </div>
                             <div class="scroll_body">
-
+                                <table class="table dataTable">
+                                <thead>
+                                    <tr style="height:0px"></tr>
+                                </thead>
+                                <tbody>
+                                    {% for account in accounts %}
+                                    <tr class="sps">
+                                        <td style="width:85px">{{ account['person_name'] }}</td>
+                                        <td style="width:85px">{{ account['person_gender'] }}</td>
+                                        <td style="width:115px">{{ account['person_birth'] }}</td>
+                                        <td style="width:145px">{{ account['person_phone'] }}</td>
+                                        <td style="width:185px">{{ account['person_idcard'] }}</td>
+                                        <td style="width:185px">{{ account['crime_id'] }}</td>
+                                        <td>{{ account['insurance_id'] }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                             </div>
-                        <div>
+                    <div class="block_7">
+                        <div class="block_8">
+                            <div class="block_9">
+                                Showing 1 to 17 of 17 entries
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

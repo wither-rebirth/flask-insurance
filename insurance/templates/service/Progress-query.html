@@ -25,7 +25,7 @@
 <div class="query">
     <div class="flex">
     <h3 style="padding-left:15px">出险人: {{ service['person_name']}} </h3>
-    <p style="position: absolute;right: 15px;">{{ service['case_status'] }}</p>
+    <div class="status">{{ service['case_status'] }}</div>
     </div>
 <img src="../static/image/horizontal-line.png">
     <ul>
@@ -38,7 +38,7 @@
         <li style="color: rgb(128,128,128,0.7);">出险时间:</li><li class="right_hand">{{ service['service_date'] }}</li>
     </ul>
     <ul>
-        <li style="color: rgb(128,128,128,0.7);">案件进展:</li><li class="right_hand">{{ service['case_progress'] }}</li>
+        <li style="color: rgb(128,128,128,0.7);">案件进展:</li><li style="color:orange" class="right_hand">{{ service['case_progress'] }}</li>
     </ul>
 <img src="../static/image/horizontal-line.png">
 </a>

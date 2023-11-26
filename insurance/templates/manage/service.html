@@ -1,5 +1,68 @@
 {% extends "base_manage.html" %}
 
 {% block content %}
-
+<div class="main_content">
+    <div class="block_1">
+        <div class="block_2">
+            <div class="block_3">
+                <div class="block_4">
+                    <h4 class="card-title">Service Information</h4>
+                    <p class="card-title-desc">This example shows the DataTables table body scrolling in the vertical direction.
+                         This can generally be seen as an alternative method to pagination for displaying a large table in a fairly small vertical area,
+                         and as such pagination has been disabled here(note that this is not mandatory,it will work just fine with pagination enabled as well!).</p>
+                     <div class="block_5">
+                        <div class="block-left"></div>
+                        <div style="text-align:right" class="block-left">
+                            <label>Search:<input type="search" class="form-control" placeholder aria-controls="scroll-vertical-datatable"></label>
+                        </div>
+                    </div>
+                    <div class="data-table">
+                        <div class="block_6">
+                            <div class="scroll_header">
+                                <table class="table dataTable">
+                                    <thead>
+                                        <tr style="text-align:left;font-size:15px" role="row">
+                                            <th style="width :85px">Name</th>
+                                            <th style="width :85px">Status</th>
+                                            <th style="width:145px">Hospital</th>
+                                            <th style="width :185px">Treatment</th>
+                                            <th style="width :185px">Reason</th>
+                                            <th>Insurance id</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="scroll_body">
+                                <table class="table dataTable">
+                                <thead>
+                                    <tr style="height:0px"></tr>
+                                </thead>
+                                <tbody>
+                                {% for service in services %}
+                                    <tr class="sps">
+                                        <td style="width:85px">{{ service['person_name'] }}</td>
+                                        <td style="width:85px">{{ service['case_status'] }}</td>
+                                        <td style="width:145px">{{ service['service_hospital'] }}</td>
+                                        <td style="width:185px">{{ service['treatment'] }}</td>
+                                        <td style="width:185px">{{ service['service_reason'] }}</td>
+                                        <td>{{ service['insurance_id'] }}</td>
+                                        <td><a style="color:grey"  href="{{ url_for('manage.service_detail', insurance_id=service['insurance_id']) }}">编辑</a></td>
+                                        <td><a style="color:red" href="{{ url_for('manage.service_delete', insurance_id=service['insurance_id']) }}">撤销</a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            </div>
+                    <div class="block_7">
+                        <div class="block_8">
+                            <div class="block_9">
+                                Showing 1 to 17 of 17 entries
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
 {% endblock %}

@@ -1205,7 +1205,6 @@ tbody, td, tfoot, th, thead, tr {
 .dataTable {
     clear: both;
     margin-bottom: 0px;
-    max-width: none !important;
     border-collapse: separate !important;
     border-spacing: 0;
     width: 1136px;
@@ -1217,10 +1216,69 @@ tbody, td, tfoot, th, thead, tr {
 }
 
 .scroll_body {
-    position: relative;
     overflow: auto;
     height: 350px;
     max-height: 350px;
     width: 100%;
 }
 
+.block_7 {
+    width: 1160px;
+    height: 33.838px;
+    margin: 0 -12px;
+    display: flex;
+}
+
+.block_8 {
+    width: 459.329px;
+    height: 33.838px;
+    padding: 0 12px;
+}
+
+.block_9 {
+    width: 459.329px;
+    height: 21.588px;
+    padding-top: 12.25px;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(80,93,105);
+}
+
+.sps td {
+    padding: 8.5px 8px;
+}
+
+.left_part {
+    width: 600px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left_part ul {
+    list-style-type: none;
+}
+
+.left_part ul li {
+    padding: 9px;
+    font-weight: 600;
+}
+
+.right_part {
+    width: 576px;
+    height: auto;
+}
+
+.top_part {
+    display: flex;
+    height: 250px;
+}
+
+.top_part img {
+    width: 33%;
+    height: 183.61px;
+}
+
+.bottom_part {
+    height: 260px;
+}

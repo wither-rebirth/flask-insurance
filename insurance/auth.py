@@ -52,12 +52,11 @@ def login():
             error = 'Incorrect password.'
         
         if error is None:
-            session.clear()
             session['user_id'] = user['id']
             session['loggedin'] = True
             session['username'] = user['username']
             message = "Logged in sucessfully !"
-            return redirect(url_for('index'))
+            return redirect(url_for('service.index'))
         
         flash(error)
     return render_template('auth/login.html')

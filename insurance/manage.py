@@ -39,7 +39,6 @@ def login():
             error = 'Incorrect password.'
         
         if error is None:
-            session.clear()
             session['manager_id'] = manager['manager_id']
             session['loggedin'] = True
             session['manager_name'] = manager['manager_name']
@@ -158,16 +157,79 @@ def ads():
     
     return render_template('manage/ads_change.html')
 
+#account chart
 @bp.route('/account', methods=("GET", "POST"))
 @login_required
 def account():
-    
-    return render_template('manage/account.html')
+    db = get_db()
+    accounts = db.execute(
+        'SELECT person_name, person_gender, person_birth, person_idcard, crime_id, insurance_id, person_email, person_phone'
+        ' FROM person',
+    ).fetchall()
+    return render_template('manage/account.html', accounts = accounts)
 
+#service chart
 @bp.route('service',methods=("GET", "POST"))
 @login_required
 def service():
-    return render_template("manage/service.html")
+    db = get_db()
+    services = db.execute(
+        'SELECT service_id, person_name, insurance_id, case_status, service_date, service_hospital, treatment, service_reason'
+        ' FROM person p JOIN service s ON p.id = s.service_id',
+    ).fetchall()
+    return render_template("manage/service.html", services = services)
+
+#detail service
+@bp.route('/<insurance_id>')
+@login_required
+def service_detail(insurance_id):
+    db = get_db()
+    detail = db.execute(
+        'SELECT person_name, insurance_id, crime_id, person_gender, person_phone, person_email, image_path_whole, image_path_part, image_path_accident,'
+        ' person_birth, person_idcard, company_name, service_date, service_reason, service_hospital, treatment, service_description'
+        ' FROM person p JOIN service s on p.id = s.service_id'
+        ' WHERE insurance_id = ?',
+        (insurance_id,)
+    ).fetchone()
+    return render_template("manage/service_detail.html", detail = detail)
+
+#delete service
+@bp.route('/<insurance_id>/delete')
+@login_required
+def service_delete(insurance_id):
+    db = get_db()
+    
+    path = db.execute(
+        'SELECT image_path_whole, image_path_part, image_path_accident'
+        ' FROM service s'
+        ' WHERE service_insurance = ?',
+        (insurance_id,)
+    ).fetchone()
+    
+    path_whole = path['image_path_whole']
+    path_part = path['image_path_part']
+    path_accident = path['image_path_accident']
+    whole_path ="insurance"+path_whole[2:]
+    part_path = "insurance" + path_part[2:]
+    accident_path = "insurance" + path_accident[2:]
+    os.remove(whole_path)
+    os.remove(part_path)
+    os.remove(accident_path)
+    
+    db.execute(
+        'DELETE FROM person'
+        ' WHERE insurance_id = ?',
+        (insurance_id,)
+    )
+    
+    db.execute(
+        'DELETE FROM service'
+        ' WHERE service_insurance = ?',
+        (insurance_id,)
+    )
+    db.commit()
+    return redirect(url_for('manage.service'))
+    
           
 @bp.before_app_request
 def load_logged_in_manager():
