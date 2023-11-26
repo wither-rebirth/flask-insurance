@@ -224,13 +224,18 @@ def query_delete(service_id):
     path_whole = path['image_path_whole']
     path_part = path['image_path_part']
     path_accident = path['image_path_accident']
-    whole_path ="insurance"+path_whole[2:]
-    part_path = "insurance" + path_part[2:]
-    accident_path = "insurance" + path_accident[2:]
-    os.remove(whole_path)
-    os.remove(part_path)
-    os.remove(accident_path)
     
+    if path_whole == None or path_accident == None or path_part == None:
+        pass
+    
+    else:
+        whole_path ="insurance"+path_whole[2:]
+        part_path = "insurance" + path_part[2:]
+        accident_path = "insurance" + path_accident[2:]
+        os.remove(whole_path)
+        os.remove(part_path)
+        os.remove(accident_path) 
+        
     db.execute(
         'DELETE FROM person'
         ' WHERE id = ?',
